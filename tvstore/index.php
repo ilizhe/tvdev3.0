@@ -1,5 +1,4 @@
 <?php
-define("URL","./");
 define('MODULENAME',"tvstore");
 define('CONFIG','tvmodule.ini');
 define("TEMPSKIN","tvstore");

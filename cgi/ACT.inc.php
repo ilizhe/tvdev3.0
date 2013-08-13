@@ -50,7 +50,6 @@ class ACT{
 		T::A('siteurl',"http://".$_SERVER['HTTP_HOST']);
 		T::A("action",$this->ca);
 		T::A("mod",$this->cm);
-		T::A("url",URL);
 		T::A('tvstoreurl',$CONF->PROJECT['tvstoreurl']);
 		T::A('bbsurl',$CONF->PROJECT['bbsurl']);
 		T::A('memberurl',$CONF->PROJECT['memberurl']);

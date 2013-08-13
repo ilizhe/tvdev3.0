@@ -1,5 +1,4 @@
 <?php
-define("URL","./");
 define('MODULENAME',"member");
 define('CONFIG','membermodule.ini');
 define("TEMPSKIN","member");
