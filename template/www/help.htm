@@ -1,0 +1,151 @@
+{include file="../header.htm"}
+{if $action == 'index'}
+			<div class="bread">
+				<a href="{$siteurl}">首页</a> &gt; <a href="{$siteurl}/help.html">帮助中心</a>
+			</div>
+			<div>
+				<section class="br f_l">
+					<div class="tit f_c">
+						<h3 class="tithelp">帮助中心</h3>						
+					</div>
+					<ul class="menu" id="menu">
+						{foreach from=$helps item=help key=category name=help}
+						{if $smarty.foreach.help.index == 0} 
+						<li>
+							<a href="#" class="m1" id="first">{$category}<span>>></span></a>							
+							<ul class="m2">
+								{foreach from=$help item=row}
+								{if $row->title==''}
+								<div class="summary" style="display:none;">{$row->description}</div>
+								{else}
+								<li><a title="{$row->title}"  class="title">{$row->title}</a><div class="summary" style="display:none;">{$row->description}</div></li>
+								{/if}
+								
+								{/foreach}
+							</ul>							
+						</li>
+						{else}
+						<li>
+							<a href="#" class="m1">{$category}<span>>></span></a>							
+							<ul class="m2">
+								{foreach from=$help item=row}
+								{if $row->title==''}
+								<div class="summary" style="display:none;">{$row->description}</div>
+								{else}
+								<li><a title="{$row->title}"  class="title">{$row->title}</a><div class="summary" style="display:none;">{$row->description}</div></li>
+								{/if}
+								
+								{/foreach}
+							</ul>							
+						</li>
+						{/if}
+						{/foreach}
+							
+					</ul>
+				</section>
+				<div class="bl f_r">
+					<div class="tit f_c">
+						<h3 id="helptitle"></h3>						
+					</div>
+					<div class="helpct"></div>
+				</div>
+			</div>
+		</div>
+		<script type="text/javascript">		
+		function getByClass(cName){
+			var oClassArray=[];
+			var list=document.getElementsByTagName("*");
+			for(var i=0;i<list.length;i++){
+				if(list[i].className==cName) oClassArray.push(list[i]);
+			}
+			return oClassArray;
+		}
+		var mList=getByClass("m1");
+		for(var i in mList){
+			mList[i].onclick=function(){
+				var parent=this.parentNode;
+				var className = parent.className;
+				if(className && className.indexOf("hidden")>-1){
+					var point =className.indexOf("hidden");
+					var newstr ='';
+					newstr = className.substring(0,point);
+					newstr += ' '+className.substring(point+6);
+					parent.className = newstr;			
+				}else{
+					parent.className = parent.className+' hidden';
+				}
+			}
+		}
+	$(document).ready(function(){
+		$(".title").live("click",function(){
+			var content=$(this).next(".summary").html();
+			var title=$(this).html();
+			$(".helpct").html(content);
+			$("#helptitle").html(title);
+		});
+		$(".m1").live("click",function(){
+			var content=$(this).next(".m2").find(".summary").html();
+			var title=$(this).html();
+			$(".helpct").html(content);
+			$("#helptitle").html(title);
+		});
+		$("#first").trigger("click").closest("li").removeClass("hidden");
+	});	
+	</script>
+{else if $action == 'about'}
+<div>
+				<section class="br f_l">
+					<div class="tit f_c">
+						<h3 class="tithelp">关于我们</h3>						
+					</div>
+					<ul class="menu" id="menu">
+						{foreach from=$rows item=row name=about}
+						{if $type=='about'}
+						{if $row->id==$aboutrow->id}
+						<li>
+							<a href="{$siteurl}/about-{$row->id}.html"class="m1">{$row->title}<span>>></span></a>
+						</li>
+						{else}
+						<li class="hidden">
+							<a href="{$siteurl}/about-{$row->id}.html"class="m1">{$row->title}<span>>></span></a>
+						</li>
+						{/if}
+						{else}
+						<li class="hidden">
+							<a href="{$siteurl}/about-{$row->id}.html"class="m1">{$row->title}<span>>></span></a>
+						</li>
+						{/if}
+						{if $smarty.foreach.about.last}
+						{if $type=='links'}
+						<li>
+							<a href="{$siteurl}/friendlink.html"class="m1">友情链接<span>>></span></a>
+						</li>
+						{else}
+						<li class="hidden">
+							<a href="{$siteurl}/friendlink.html"class="m1">友情链接<span>>></span></a>
+						</li>
+						{/if}
+						{/if}
+						{/foreach}
+													
+					</ul>
+				</section>
+				<div class="bl f_r">
+					{if $type=='links'}
+					<div class="tit f_c">
+						<h3>友情链接</h3>						
+					</div>
+					<div class="helpct alllinks">
+						{$friendlinks}
+					</div>
+					{else}
+					<div class="tit f_c">
+						<h3>{$aboutrow->title}</h3>						
+					</div>
+					<div class="helpct">{$aboutrow->description}</div>
+					{/if}
+				</div>
+			</div>		
+		</div>	
+{/if}
+{include file="../footer.htm"}			

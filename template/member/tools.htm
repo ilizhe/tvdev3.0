@@ -1,0 +1,19 @@
+{include file="../header.htm"}
+{include file="menu.html"}
+		<div class="bl f_r">
+			<div class="tit f_c">
+				<h3 >模拟器配置文件</h3>
+			</div>
+		<div class="box_edit">
+				
+			<div class="b_btn">
+				<a class="apply" href="{$url}?mod=tools&act=down">点击下载</a>
+				<ul class="configlist">
+				{foreach from=$files key=key item=dnum}
+					<li>dnum:{$dnum}<a href="{$url}?mod=tools&act=down&num={$key}">重新下载</a> <a href="{$url}?mod=tools&act=update&num={$key}">刷新认证状态</a></li>
+				{/foreach}
+				</ul>
+			</div>
+		</div>				
+	</div>
+{include file="../footer.htm"}

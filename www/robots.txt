@@ -1,0 +1,7 @@
+#
+# robots.txt for www
+#
+
+User-agent: * 
+Disallow: /qrcode
+Disallow: /api

@@ -1,0 +1,219 @@
+{include file="../header.htm"}
+{if $action == 'index'}
+			<div class="bread">
+				<a href="/">首页</a> > <a href="{$siteurl}/tv.html">TV应用</a>
+			</div>
+			<div>
+				<section class="br f_l">
+					<div class="tit f_c">
+						<h3 class="tapp">应用分类</h3>						
+					</div>
+					<ul class="classific">
+						{foreach from=$appClasses item=row}
+						<li {if $classid == ($row->classid)}class="cur"{/if}><a href="{$siteurl}/app-{$row->classid}-N-1.html">{$row->title}<span>>></span></a></li>
+						{/foreach}
+					</ul>
+					<div class="tit f_c">
+						<h3>热门专题</h3>						
+					</div>
+					<ul class="topic">
+						{foreach from=$smarttvlist item=row}
+						<li>
+							<a href="{$siteurl}/app-{$row->classid}-N-1.html" class="thimg"><img src="{$row->icon}"  width="125" height="50"></a>
+							<div>
+								<h4><a href="{$siteurl}/app-{$row->classid}-N-1.html">{$row->title}</a></h4>
+								<p>{$row->desci}</p>
+							</div>							
+						</li>
+						{/foreach}
+					</ul>
+				</section>
+				<div class="bl f_r">
+					<div class="tit tabtit f_c">
+						<h3 {if $order=='N'}class="cur" {/if}><a href="{$siteurl}/app-{$classid}-N-{$page}.html">按最新</a></h3>
+						<h3 {if $order=='H'}class="cur" {/if}><a href="{$siteurl}/app-{$classid}-H-{$page}.html">按下载量</a></h3>
+					</div>
+					<ul class="listapp">
+						{foreach from=$apps item=row}
+						<li>
+							<a href="{$siteurl}/detail-{$row->appid}.html" class="f_l"><img src="{$row->icon}" alt="{$row->title}"></a>
+							<div>
+								<a href="{$siteurl}/detail-{$row->appid}.html" class="aname" title="{$row->title}" >{$row->title|truncate:8:""}</a>
+								<span class="score"><span style="width:{$row->level*20}%;"></span></span>
+								<p>更新：{$row->onlinetime|truncate:10:""}</p>			
+							</div>
+											
+						</li>
+						{/foreach}
+						
+					</ul>
+					<div class="page">
+						{$subPages}
+					</div>
+				</div>
+			</div>
+		</div>
+{else if $action == 'detail'}
+		<div class="bread">
+				<a href="/">首页</a> > <a href="{$siteurl}/tv.html">TV应用</a> > <span>{$app->title}</span>
+			</div>
+			<div>
+				<section class="br f_l">
+					<div class="sapp">
+						<h3>{$app->title}</h3>
+						<img src="{$app->icon}" alt="{$app->title}">
+						<span class="score"><span style="width:{$app->level*20}%;"></span></span>
+						<div class="opr">
+							
+							<!-- Baidu Button BEGIN -->
+							<div id="bdshare" class="bdshare_t bds_tools get-codes-bdshare">
+							<span class="my_bds_more">分享到：</span>
+							</div>
+							<script type="text/javascript" id="bdshare_js" data="type=tools&amp;uid=6618735" ></script>
+							<script type="text/javascript" id="bdshell_js"></script>
+							<script type="text/javascript">
+							var bds_config = {literal}{{/literal}'bdPic':'{$app->icon}','bdText':'{$app->title}'{literal}}{/literal};
+							document.getElementById("bdshell_js").src = "http://bdimg.share.baidu.com/static/js/shell_v2.js?cdnversion=" + Math.ceil(new Date()/3600000);
+							</script>
+							<!-- Baidu Button END -->
+							
+							<a href="javascript:;" class="f_r" id="saveFavorite">收藏</a>
+						</div>
+					</div>
+					<script type="text/javascript">
+					$(document).ready(function(){
+						$("#saveFavorite").click(function(){
+							var uid={$uid};
+							if(uid==0){
+								var flag=confirm("请先登录,跳转到登录页面？");
+								if(flag)
+									location.href="{$memberurl}/?mod=member&act=loggin&returnurl={$referer}";
+								return false;
+							}else{
+								$.getJSON("?mod=app&act=saveFavorite&appkey={$app->appid}",function(data){
+									if(data.msg=='success')
+										alert("收藏成功");
+									else
+										alert("收藏失败，请稍后再试");
+									return false;
+								});
+							}
+							
+						});
+						
+					});
+					</script>
+					<div>
+						<div class="tit f_c">
+							<h3>论坛精华</h3>						
+						</div>
+						<ul class="flight">
+							<script type="text/javascript" src="{$bbsurl}/api.php?mod=js&bid=19"></script>
+						</ul>
+					</div>
+				</section>
+				<div class="bl f_r">
+					<div>
+						<ul class="dinfo">
+							<li><strong>价&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;格：</strong>{$app->charge}欢币</li>
+							<li><strong>分&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;类：</strong>{$app->category}</li>
+							<li><strong>版&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;本：</strong>{$app->ver}</li>
+							<li><strong>操控方式：</strong>{$app->operatetype}</li>
+							<li><strong>发布日期：</strong>{$app->onlinetime}</li>
+							<li><strong>文件大小：</strong>{$app->size} KB</li>
+							<li class="downtips"><strong>友情提示：</strong><span>暂不提供应用下载，请到相关智能电视应用商店进行下载</span></li>
+							<li class="intro">
+								<strong>应用介绍：</strong>
+								<div>
+								{$app->description}
+								</div>
+								<div class="bimg" id="bimg"><!--图片大小必须相同-->
+									<div>
+										{foreach from=$pics item=pic}
+										<img src="{$pic}" />
+										{/foreach}
+									</div>
+									<span class="pre"><</span>
+									<span class="next">></span>
+								</div>
+							</li>
+						</ul>
+					</div>
+					<div>
+						<div class="tit f_c">
+							<h3>相关应用</h3>						
+						</div>
+						<ul class="listapp">
+							{foreach from=$recommand item=row}						
+							<li>
+								<a href="{$siteurl}/detail-{$row->appid}.html" class="f_l"><img src="{$row->icon}" alt="{$row->title}"></a>
+								<div>
+									<a href="{$siteurl}/detail-{$row->appid}.html" class="aname">{$row->title|truncate:8:""}</a>
+									<span class="score"><span style="width:{$row->level*20}%;"></span></span>
+									<p>更新：{$row->onlinetime|truncate:10:""}</p>
+								</div>															
+							</li>
+							{/foreach}
+						</ul>						
+					</div>
+				</div>
+			</div>
+			<script type="text/javascript" src="{$objdir}/js/apppic.js"></script>
+		</div>
+			
+{else if $action == 'searchApp'}
+	<div class="bread">
+				<a href="">首页</a> > <a href="{$siteurl}/app.html">应用软件</a> > <span>关于“<em>{$keyword}</em>”的安卓游戏/安卓软件</span>
+	</div>			
+		<div>
+		<div class="tit f_c">
+			<h3>搜索结果</h3>
+		</div>
+		<p class="sr">搜索发现关于"<em>{$keyword}</em>"的安卓游戏/安卓软件{$appcount}个</p>
+		{if $appcount==0}
+			<div class="noresult">
+				<em>对不起，没有找到您想要的结果</em>
+				<dl>
+					<dt>建议您</dt>
+					<dd>1. 去掉不必要的字词，如“的”、“或”等；</dd>
+					<dd>2. 精简搜索关键词，使用其中最主要的字词；</dd>
+					<dd>3. 确认关键词的拼写没有错误；</dd>
+				</dl>
+			</div>
+			<div class="tit f_c">
+				<h3>热门推荐</h3>
+		    </div>
+			<ul class="listapp sresult">
+						{foreach from=$latestapp item=row}
+						<li>
+							<a href="{$siteurl}/detail-{$row->appid}.html" class="f_l"><img src="{$row->icon}" alt="{$row->title}" /></a>
+							<div>
+								<a href="{$siteurl}/detail-{$row->appid}.html" class="aname">{$row->title|truncate:8:""}</a>
+								<span class="score"><span style="width:{$row->level*20}%;"></span></span>
+								<p>更新：{$row->onlinetime|truncate:10:""}</p>	
+							</div>
+						</li>
+						{/foreach}
+			</ul>
+		{else}
+				<ul class="listapp sresult">
+					{foreach from=$apps item=row}
+					<li>
+						<a href="{$siteurl}/detail-{$row->appid}.html" class="f_l"><img src="{$row->icon}" alt="{$row->title}" /></a>
+						<div>
+							<a href="{$siteurl}/detail-{$row->appid}.html" class="aname">{$row->title|truncate:8:""}</a>
+							<span class="score"><span style="width:{$row->level*20}%;"></span></span>
+							<p>更新：{$row->onlinetime|truncate:10:""}</p>
+						</div>	
+					</li>
+					{/foreach}
+				</ul>
+				<div class="page">
+					{$subPages}
+				</div>
+		{/if}
+	</div>
+	</div>
+				
+{/if}
+{include file="../footer.htm"}	

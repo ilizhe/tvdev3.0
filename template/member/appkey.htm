@@ -1,0 +1,76 @@
+{include file="../header.htm"}
+{if $action == 'applyappkey'}
+{include file="menu.html"}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>申请appkey</h3></div>
+			<div class="box_reg">
+			
+			<form action="{$obj->url('getappkey')}" method="POST" onsubmit="return FRM.check(this)"  enctype="multipart/form-data">
+				<input type="hidden" name="formhash" value="{$formhash}"/>				
+					<ul class="list_login">
+						<li>
+							<label for="username">请输入应用名称：</label><input type="text" id="appname" name="appname"/><span class="exp">应用名称中请不要包含版本号、日期等文字</span>
+						</li>						
+						<li>
+							<label for="email">确认应用名称：</label><input type="text" id="cappname" name="cappname"/>
+						</li>
+						<li class="box_btn"><label></label><input type="submit" value="生&nbsp;成" class="submit"/></li>
+					</ul>
+				</form>
+			</div>				
+		</div>
+{else if $action == 'getappkey'}
+{else if $action == 'updateappkey'}
+{else if $action == 'appkeymanage'}
+{include file="menu.html"}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>appkey权限管理</h3></div>
+			<div class="box_key">
+				<form action="{$obj->url('appkeymanage')}" method="POST" onsubmit="return FRM.check(this)"  enctype="multipart/form-data">
+					<label for="appname">应用名称：</label><input type="text" id="appname" class="aname" name="appname"/>
+					<input type="submit" value="查询" class="btn"/>
+				</form>
+				<table class="tb">
+					<tr>
+						<th class="col1">应用名称</th>						
+						<th>appkey</th>
+						<th>支付权限</th>
+						<th>广告权限</th>						
+					</tr>
+					{foreach from=$applist key=k item=app}
+					<tr>
+						<td class="col1">{$app->appname}</td>
+						<td>{$app->appkey}</td>						
+						<td>
+						{if $app->ispay != 0 }
+						已开通支付权限
+						{else}
+						<button class="btn" onclick="javascript:window.location.href='{$url}?mod=appkey&act=updateappkey&type=PAY&appname={$app->appname}&key={$app->appkey}'">开通支付权限</button>
+						{/if}
+						</td>
+						<td>
+						{if $app->isad != 0 }
+						已开通广告权限
+						{else}
+						<button class="btn" onclick="javascript:window.location.href='{$url}?mod=appkey&act=updateappkey&type=AD&appname={$app->appname}&key={$app->appkey}'">开通广告权限</button>
+						{/if}
+						</td>						
+					</tr>	
+					{/foreach}
+				</table>
+			</div>				
+		</div>
+		</div>
+{else if $action == 'appexplain'}
+{include file="menu.html"}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>appkey说明</h3></div>
+			<div class="box_app">
+				<p>appkey是每个应用在应用商店内的唯一身份标识，开发者可用于欢网应用是商店所提供的各种API调用中标明应用身份等用途。</p>
+				<p>每个appkey唯一对应一个应用。每个开发者账号可申请多个appkey。</p>
+				<p>appkey需申请才可以获得。申请成功后，开发者可根据需要为其申请特别权限服务（如支付、广告、统计等），并正确调用API使用。</p>
+				<a href="{$url}?mod=appkey&act=applyappkey" class="apply">申请appkey</a>
+			</div>				
+		</div>
+{/if}
+{include file="../footer.htm"}

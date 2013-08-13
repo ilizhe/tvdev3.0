@@ -1,0 +1,298 @@
+<?xml version="1.0" encoding="ISO-8859-1"?>
+<root>
+	<item id="Title"><![CDATA[Discuz! Plugin]]></item>
+	<item id="Version"><![CDATA[X2]]></item>
+	<item id="Time"><![CDATA[2012-04-16 20:33]]></item>
+	<item id="From"><![CDATA[Discuz! Board (http://127.0.0.1/2.0/)]]></item>
+	<item id="Data">
+		<item id="plugin">
+			<item id="available"><![CDATA[1]]></item>
+			<item id="adminid"><![CDATA[1]]></item>
+			<item id="name"><![CDATA[【HUX】下載中心]]></item>
+			<item id="identifier"><![CDATA[huxdown]]></item>
+			<item id="description"><![CDATA[【HUX】下載中心插件
+版權︰樂游網-HUX插件
+網址︰http://www.happyux.com]]></item>
+			<item id="datatables"><![CDATA[]]></item>
+			<item id="directory"><![CDATA[huxdown/]]></item>
+			<item id="copyright"><![CDATA[HappyUX.Com]]></item>
+			<item id="version"><![CDATA[1.4]]></item>
+			<item id="__modules">
+				<item id="0">
+					<item id="name"><![CDATA[huxdown]]></item>
+					<item id="menu"><![CDATA[【HUX】下載中心]]></item>
+					<item id="url"><![CDATA[]]></item>
+					<item id="type"><![CDATA[1]]></item>
+					<item id="adminid"><![CDATA[0]]></item>
+					<item id="displayorder"><![CDATA[0]]></item>
+					<item id="navtitle"><![CDATA[Download]]></item>
+					<item id="navicon"><![CDATA[]]></item>
+					<item id="navsubname"><![CDATA[]]></item>
+					<item id="navsuburl"><![CDATA[]]></item>
+				</item>
+			</item>
+		</item>
+		<item id="version"><![CDATA[X2,X2.5,X1.5]]></item>
+		<item id="var">
+			<item id="0">
+				<item id="displayorder"><![CDATA[5]]></item>
+				<item id="title"><![CDATA[允許的版塊]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[fid]]></item>
+				<item id="type"><![CDATA[forums]]></item>
+				<item id="extra"><![CDATA[]]></item>
+				<item id="__value">
+					<item id="0"><![CDATA[]]></item>
+				</item>
+			</item>
+			<item id="1">
+				<item id="displayorder"><![CDATA[4]]></item>
+				<item id="title"><![CDATA[讀取方式]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[loadtype]]></item>
+				<item id="type"><![CDATA[select]]></item>
+				<item id="value"><![CDATA[2]]></item>
+				<item id="extra"><![CDATA[1=論壇版塊
+2=分類信息]]></item>
+			</item>
+			<item id="2">
+				<item id="displayorder"><![CDATA[24]]></item>
+				<item id="title"><![CDATA[按回復數評級]]></item>
+				<item id="description"><![CDATA[啟用此項後按回復數評級,不再按瀏覽量評級]]></item>
+				<item id="variable"><![CDATA[startype]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[0]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="3">
+				<item id="displayorder"><![CDATA[23]]></item>
+				<item id="title"><![CDATA[5皇冠瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star15]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[5000]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="4">
+				<item id="displayorder"><![CDATA[22]]></item>
+				<item id="title"><![CDATA[4皇冠瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star14]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[3000]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="5">
+				<item id="displayorder"><![CDATA[17]]></item>
+				<item id="title"><![CDATA[4鑽瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star9]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[800]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="6">
+				<item id="displayorder"><![CDATA[18]]></item>
+				<item id="title"><![CDATA[5鑽瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star10]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[1200]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="7">
+				<item id="displayorder"><![CDATA[19]]></item>
+				<item id="title"><![CDATA[1皇冠瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star11]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[1500]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="8">
+				<item id="displayorder"><![CDATA[20]]></item>
+				<item id="title"><![CDATA[2皇冠瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star12]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[2000]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="9">
+				<item id="displayorder"><![CDATA[21]]></item>
+				<item id="title"><![CDATA[3皇冠瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star13]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[2500]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="10">
+				<item id="displayorder"><![CDATA[16]]></item>
+				<item id="title"><![CDATA[3鑽瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star8]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[500]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="11">
+				<item id="displayorder"><![CDATA[15]]></item>
+				<item id="title"><![CDATA[2鑽瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star7]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[200]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="12">
+				<item id="displayorder"><![CDATA[0]]></item>
+				<item id="title"><![CDATA[開啟插件]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[open]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="13">
+				<item id="displayorder"><![CDATA[1]]></item>
+				<item id="title"><![CDATA[關閉插件提示]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[closemsg]]></item>
+				<item id="type"><![CDATA[textarea]]></item>
+				<item id="value"><![CDATA[下載中心維護中......]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="14">
+				<item id="displayorder"><![CDATA[2]]></item>
+				<item id="title"><![CDATA[插件名稱]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[pluginname]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[下載中心]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="15">
+				<item id="displayorder"><![CDATA[3]]></item>
+				<item id="title"><![CDATA[允許的用戶組]]></item>
+				<item id="description"><![CDATA[只有被允許的用戶組發布的主題才顯示在下載中心]]></item>
+				<item id="variable"><![CDATA[allowgp]]></item>
+				<item id="type"><![CDATA[groups]]></item>
+				<item id="extra"><![CDATA[]]></item>
+				<item id="__value">
+					<item id="0"><![CDATA[1]]></item>
+					<item id="1"><![CDATA[2]]></item>
+					<item id="2"><![CDATA[3]]></item>
+				</item>
+			</item>
+			<item id="16">
+				<item id="displayorder"><![CDATA[6]]></item>
+				<item id="title"><![CDATA[分類信息ID]]></item>
+				<item id="description"><![CDATA[篩選這些分類信息下的主題顯示到下載中心,即只有關聯這些分類信息的主題才會顯示,用“,”隔開]]></item>
+				<item id="variable"><![CDATA[sortid]]></item>
+				<item id="type"><![CDATA[text]]></item>
+				<item id="value"><![CDATA[1,2]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="17">
+				<item id="displayorder"><![CDATA[7]]></item>
+				<item id="title"><![CDATA[每頁顯示下載數]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[nums]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[8]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="18">
+				<item id="displayorder"><![CDATA[8]]></item>
+				<item id="title"><![CDATA[二維碼顯示]]></item>
+				<item id="description"><![CDATA[開啟後顯示二維碼,關閉後顯示圖片附件(圖片附件顯示不支持X1.5)]]></item>
+				<item id="variable"><![CDATA[qr]]></item>
+				<item id="type"><![CDATA[radio]]></item>
+				<item id="value"><![CDATA[1]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="19">
+				<item id="displayorder"><![CDATA[9]]></item>
+				<item id="title"><![CDATA[1心瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star1]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[2]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="20">
+				<item id="displayorder"><![CDATA[10]]></item>
+				<item id="title"><![CDATA[2心瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star2]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[5]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="21">
+				<item id="displayorder"><![CDATA[11]]></item>
+				<item id="title"><![CDATA[3心瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star3]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[10]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="22">
+				<item id="displayorder"><![CDATA[12]]></item>
+				<item id="title"><![CDATA[4心瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star4]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[20]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="23">
+				<item id="displayorder"><![CDATA[13]]></item>
+				<item id="title"><![CDATA[5心瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star5]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[50]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+			<item id="24">
+				<item id="displayorder"><![CDATA[14]]></item>
+				<item id="title"><![CDATA[1鑽瀏覽量]]></item>
+				<item id="description"><![CDATA[]]></item>
+				<item id="variable"><![CDATA[star6]]></item>
+				<item id="type"><![CDATA[number]]></item>
+				<item id="value"><![CDATA[100]]></item>
+				<item id="extra"><![CDATA[]]></item>
+			</item>
+		</item>
+		<item id="language">
+			<item id="scriptlang">
+				<item id="add_type"><![CDATA[類別]]></item>
+				<item id="add_user"><![CDATA[發布]]></item>
+				<item id="add_view"><![CDATA[人氣]]></item>
+				<item id="add_re"><![CDATA[評論]]></item>
+				<item id="add_time"><![CDATA[時間]]></item>
+				<item id="star_none"><![CDATA[未評級，需再努力]]></item>
+				<item id="star_xin"><![CDATA[心級評價，不錯]]></item>
+				<item id="star_zuan"><![CDATA[鑽級評價，推薦]]></item>
+				<item id="star_guan"><![CDATA[皇冠級評價，大神]]></item>
+			</item>
+			<item id="templatelang">
+				<item id="all"><![CDATA[全部]]></item>
+				<item id="ordertype"><![CDATA[排序方式︰]]></item>
+				<item id="ordertype_1"><![CDATA[按發布時間正序]]></item>
+				<item id="ordertype_2"><![CDATA[按發布時間倒序]]></item>
+				<item id="ordertype_3"><![CDATA[按人氣值正序]]></item>
+				<item id="ordertype_4"><![CDATA[按人氣值倒序]]></item>
+				<item id="ordertype_5"><![CDATA[按評論數正序]]></item>
+				<item id="ordertype_6"><![CDATA[按評論數倒序]]></item>
+				<item id="copyright"><![CDATA[版權信息]]></item>
+				<item id="copyright_author"><![CDATA[樂游網-HUX插件]]></item>
+				<item id="copyright_front"><![CDATA[HUX]]></item>
+				<item id="copyright_back"><![CDATA[DOWN]]></item>
+			</item>
+		</item>
+	</item>
+</root>

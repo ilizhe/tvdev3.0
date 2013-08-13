@@ -1,0 +1,112 @@
+{template common/header}
+<script type="text/javascript" src="{$_G[setting][jspath]}jquery-1.4.2.min.js?{VERHASH}"></script>
+<script type="text/javascript" src="{$_G[setting][jspath]}request.js?{VERHASH}"></script>
+<script type="text/javascript" src="{$_G[setting][jspath]}select.js?{VERHASH}"></script>
+$search
+<script>
+
+var jq=jQuery.noConflict();
+jq(document).ready(function(){
+	PCT.init("#pinpai","#xpfa","#rjbb");
+	jq("#pinpai").change(PCT.provc);
+	jq("#xpfa").change(PCT.cityc);
+	var url="plugin.php?id=huxdown:huxdown";
+	if(__H['sid']) url+='&sid='+__H['sid'];
+	if(__H['oid']) url+='&oid='+__H['oid'];
+	jq("#searchfilter").click(function(){
+		var pvalue=jq("#pinpai").val();
+		var xvalue=jq("#xpfa").val();
+		var rvalue=jq("#rjbb").val();
+		if(pvalue !=0){
+			for(var i=0;i<pinpai.length;i++){
+				if(pinpai[i][0] == pvalue)
+					pvalue=pinpai[i][1];
+			}
+			url+="&pp="+encodeURIComponent(pvalue);
+			if(xvalue !=0){
+				for(var i=0;i<xpfa.length;i++){
+					if(xpfa[i][0] == xvalue)
+						xvalue=xpfa[i][1];
+				}
+				url+="&xp="+encodeURIComponent(xvalue);
+				if(rvalue !=0){
+					for(var i=0;i<rjbb.length;i++){
+						if(rjbb[i][0] == rvalue)
+							rvalue=rjbb[i][1];
+					}
+					url+="&bb="+encodeURIComponent(rvalue);
+				}
+			}
+			window.location.href=url;
+		}
+	});
+	var p=x=r=0;
+	if(__H['pp']){
+		for(var i=0;i<pinpai.length;i++){
+			if(pinpai[i][1] == __H['pp'])
+				p=pinpai[i][0];
+		}
+		if(__H['xp']){
+			for(var i=0;i<xpfa.length;i++){
+				if(xpfa[i][1] == __H['xp'])
+					x=xpfa[i][0];
+			}
+			if(__H['bb']){
+				jq("#rjbb").show();
+				for(var i=0;i<rjbb.length;i++){
+					if(rjbb[i][1] == __H['bb'])
+						r=rjbb[i][0];
+				}
+			}
+		}else{jq("#rjbb").hide();}
+	}else{jq("#xpfa").hide();jq("#rjbb").hide();}
+	
+	
+	PCT.defval(p,x,r);
+});
+</script>
+<div id="pt" class="bm cl"><div class="z">
+<a href="index.php" class="nvhm" title="{lang homepage}">$_G[setting][bbname]</a><em> &rsaquo; </em><a href="plugin.php?id=huxdown:huxdown">$pluginname</a></div> 
+</div>
+
+<div id="ct" class="wp cl ct2_a">
+	<div class="appl">
+		<div class="tbn">
+			<h2 class="mt bbda">$pluginname</h2>
+			<ul>
+				 <li $atclass[0]><a href="plugin.php?id=huxdown:huxdown">{lang huxdown:all}</a></li>
+				<!--{loop $sortidss $sort}-->
+				 <li $atclass[$sort['typeid']]><a href="plugin.php?id=huxdown:huxdown&sid=$sort['typeid']">$sort['name']</a></li>
+				<!--{/loop}-->
+			</ul>
+
+		</div>
+			
+			<div style="padding:10px 0;"></div>
+
+
+	</div>
+<div class="mn">
+<div class="bm"><div class="bm_c">
+<strong>{lang huxdown:ordertype}</strong><a href="plugin.php?id=huxdown:huxdown$exc&oid=1">{lang huxdown:ordertype_1}</a> | <a href="plugin.php?id=huxdown:huxdown$exc&oid=2">{lang huxdown:ordertype_2}</a> | <a href="plugin.php?id=huxdown:huxdown$exc&oid=3">{lang huxdown:ordertype_3}</a> | <a href="plugin.php?id=huxdown:huxdown$exc&oid=4">{lang huxdown:ordertype_4}</a> | <a href="plugin.php?id=huxdown:huxdown$exc&oid=5">{lang huxdown:ordertype_5}</a> | <a href="plugin.php?id=huxdown:huxdown$exc&oid=6">{lang huxdown:ordertype_6}</a>
+</div><div class="bm_c">
+<strong>按机型检索:</strong>
+<select name="pinpai" id="pinpai"></select>
+<select name="xpfa" id="xpfa"></select>
+<select name="rjbb" id="rjbb"></select>
+<input type="button" value="检索" id="searchfilter" />
+</div>
+</div>
+<div class="bm bw0">
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+$flist
+</table>
+<!--{if $multi}-->
+<table width="100%" border="0" cellspacing="0" cellpadding="0">
+$multi
+</table>
+<!--{/if}-->
+</div>	
+</div>
+</div>
+{template common/footer}

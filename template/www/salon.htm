@@ -1,0 +1,72 @@
+{include file="../header.htm"}
+			<div class="bread">
+				<a href="{$siteurl}">首页</a> > <a href="{$siteurl}/salon.html">沙龙活动</a>
+			</div>
+			<div>
+				<div class="bl f_l">
+					<div>
+						{foreach from=$salon->rows item=row name=salon}
+							{if $smarty.foreach.salon.first}
+								<div class="hotsalon">
+								<a href="{$bbsurl}/thread-{$row->salon}-1-1.html"><img src="{$bbsurl}/data/attachment/common/{$row->banner}" alt="{$row->name}"></a>
+								<h3 class="bgblue"><a href="{$bbsurl}/thread-{$row->salon}-1-1.html">{$row->name}</a></h3>
+								</div>
+								{if $row->threads}
+								<ul class="listsl">
+									{foreach from=$row->threads item=thread}
+									<li><a href="{$bbsurl}/thread-{$thread->tid}-1-1.html" target="_blank">{$thread->subject}</a><a><img src="{$objdir}/img/play.png"></a></li>
+									{/foreach}
+								</ul>
+								{/if}
+							{else}	
+								<div class="hotsalon">
+								<a href="{$bbsurl}/thread-{$row->salon}-1-1.html"><img src="{$bbsurl}/data/attachment/common/{$row->banner}" alt="{$row->name}"></a>
+								<h3 class="bggray"><a href="{$bbsurl}/thread-{$row->salon}-1-1.html">{$row->name}</a></h3>
+								</div>
+								{if $row->threads}
+								<ul class="listsl">
+									{foreach from=$row->threads item=thread}
+									<li><a href="{$bbsurl}/thread-{$thread->tid}-1-1.html" target="_blank">{$thread->subject}</a><a><img src="{$objdir}/img/play.png"></a></li>
+									{/foreach}
+								</ul>
+								{/if}
+							{/if}
+						{/foreach}
+						
+						<div class="page">
+							{$subPages}
+						</div>
+					</div>
+				</div>
+				<section class="br f_r">
+					<div>
+						<div class="tit f_c">
+							<h3>新浪微博</h3>						
+						</div>
+						<div>
+							<iframe width="100%" height="550" class="share_self"  frameborder="0" scrolling="no" src="http://widget.weibo.com/weiboshow/index.php?language=&width=0&height=550&fansRow=2&ptype=1&speed=0&skin=10&isTitle=0&noborder=0&isWeibo=1&isFans=1&uid=2887330904&verifier=836add2b&dpc=1"></iframe>
+						</div>
+					</div>
+					<div>
+						<div class="tit f_c">
+							<h3>品牌专区</h3>						
+						</div>
+						<ul class="brandZone">
+							{foreach from=$ppzq item=row }
+							<li><a href="{$bbsurl}/forum-{$row->fid}-1.html"><img src="{$bbsurl}/data/attachment/common/{$row->icon}"></a></li>
+							{/foreach}						
+						</ul>
+					</div>
+					<div>
+						<div class="tit f_c">
+							<h3>论坛精华</h3>						
+						</div>
+						<ul class="flight">
+							<script type="text/javascript" src="{$bbsurl}/api.php?mod=js&bid=19"></script>
+						</ul>
+					</div>
+				</section>				
+			</div>
+			
+		</div>
+{include file="../footer.htm"}	

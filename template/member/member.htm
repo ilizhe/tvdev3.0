@@ -1,0 +1,172 @@
+{include file="../header.htm"}
+	{if $action=="loggin"}
+		{if $casused=='1'}
+		<div class="ctt">
+			<div class="box_login">
+				<h2>登录成功</h2>
+					<ul class="list_login">
+						<li class="alert">您的账号登录成功，但是还没有激活。只有在激活后，才可以使用会员服务。</li>
+						<li>您可以选择：</li>
+						<li class="lrows"><a href="{$url}?mod=member&act=resend" class="c_blue">重发送激活邮件</a></li>
+						<li class="lrows"><a href="{$url}?mod=member&act=emailchange" class="c_blue">修改邮箱</a></li>
+						<li class="lrows"><a href="{$url}?mod=member&act=logout" class="c_blue">退出登录</a></li>
+					</ul>
+			</div>
+			<img src="{$objdir}/image/laside.jpg" class="laside">			
+		</div>
+		{else}
+		<div>
+				<div class="tit f_c">
+					<h3>用户登录</h3>
+				</div>
+				<div class="box_reg">
+				<form method="POST" action="{$url}?mod=member&act=loggin" onsubmit="return FRM.check(this);">
+				<input type="hidden" name="formhash" value="{$formhash}"/>
+					<ul class="list_login reg">
+						{if $msg }<li class="alert">{$msg}</li>{/if}
+						<li><label for="username">用户名：</label><input type="text" id="username" value="{$username}" name="username_{$frm}" maxlength="15"/></li>
+						<li><label for="password">密码：</label><input type="password" id="password" name="password_{$frm}" maxlength="16"/></li>
+						{if $verify>2}
+						<li><label for="check">验证码：</label><input type="text" id="check" class="check" name="verify_{$frm}" maxlength="6"/><a href="#" onclick="return FRM.vu('#verifyimg','{$url}verify.php?random=');"><img src="{$url}verify.php" id="verifyimg"/></a></li>
+						<li class="lrows"><label></label><span>字母不区分大小写</span><a href="#" onclick="return FRM.vu('#verifyimg','{$url}verify.php?random=');" class="refresh">点击图片刷新</a></li>
+						<input type="hidden" name="verify" value="{$verify}"/>
+						{/if}
+						<li class="regsub"><label></label><input type="submit" value="登录" class="submit"/><a href="{$url}?mod=register&act=lostpass" class="c_blue">忘记密码?</a></li>
+						<li class="box_btn"><label></label>还没有账号？<a href="{$url}?mod=register">马上注册</a></li>						
+					</ul>
+				</form>
+			</div>
+			</div>
+		</div>
+		{/if}
+	{else if $action=='resend'}
+	<div class="ctt">
+			<div class="tit f_c"><h3>邮箱激活</h3></div>
+			<div class="box_reg">
+				<p class="tips c_red">{$U->devname}（{$U->email}）将会收到一封邮件，点击邮件中的链接，即可执行激活操作啦</p>
+				{if $mailserver != ""}<a href="http://{$mailserver}" target="_blank" class="go">立即登录邮箱</a>{/if}
+				<p class="littip">如果没找到激活邮件可以到垃圾邮件中找找或者<a href="{$resendurl}">重新发送激活邮件</a> 返回<a href="{$loginurl}">登录</a></p>
+			</div>				
+		</div>
+	{else if $action == 'emailchange'}
+		<div class="ctt">
+			<div class="tit f_c"><h3>修改邮箱</h3></div>
+			<div class="box_reg">
+				<form method="POST" action="{$url}?mod=member&act=emailchange" onsubmit="return FRM.check(this);">
+				<input type="hidden" name="formhash" value="{$formhash}"/>
+					{if $cm==1}
+
+			<p class="tips c_red">{$U->devname}（{$U->email}）将会收到一封邮件，点击邮件中的链接，即可执行激活操作啦</p>
+			{if $mailserver != ""}<a href="http://{$mailserver}" target="_blank" class="go">立即登录邮箱</a>{/if}
+			<p class="littip">如果没找到激活邮件可以到垃圾邮件中找找或者<a href="{$resendurl}">重新发送激活邮件</a> 返回<a href="{$loginurl}">登录</a></p>
+
+					{else}
+					<ul class="list_login list_get">
+						<li>
+							<label for="username">原邮箱：</label>{$email}
+						</li>						
+						<li>
+							<label for="email">请输入新邮箱：</label><input type="text" name="email" isw="2" regex="email" id="email" msg="邮箱格式不正确"/>
+						</li>
+						<li class="box_btn"><input type="submit" value="提&nbsp;交" class="submit"/></li>
+					</ul>
+					{/if}
+				</form>
+			</div>				
+		</div>
+	{else if $action=="email"}
+		{include file="menu.html"}
+			<div class="bl f_r">
+				<div class="tit f_c"><h3>修改邮箱</h3></div>
+				<div class="box_edit">
+					<form method="POST" action="{$url}?mod=member&act=email" onsubmit="return FRM.check(this);">
+					<input type="hidden" name="formhash" value="{$formhash}"/>
+						<ul>
+
+							<li>
+								<label for="passwd">原邮箱：</label>{$email}
+							</li>
+							<li>
+								<label for="password">密码：</label><input type="password" id="password" class="text" isw="1" msg="请输入密码" name="password" maxlength="16">
+							</li>
+							<li>
+								<label for="passwd">新邮箱：</label><input type="text" id="passwd" isw="2" regex="email" msg="请输入正确的邮箱" name="email" class="text">
+							</li>
+
+							<li class="b_btn">
+								<input type="submit" value="确定" class="btn"><input type="reset" value="重置" class="btn">
+							</li>
+						</ul>
+					</form>
+				</div>				
+			</div>
+	{else if $action=='select'}
+		{include file="menu.html"}
+		<div class="bl f_r">
+			<div class="tit f_c">
+				<h3 >选择账户属性</h3>
+			</div>
+				<div class="box_edit">
+					<script>
+					function confirmd(frm,ty,o){
+						if(confirm('您确定选择 '+o+' 吗？')){
+							frm.type.value=ty;
+							frm.submit();
+							return true;
+						}else{
+							return false;
+						}
+					}
+					</script>
+					<div class="bp">
+					<form method="POST" action="{$url}?mod=member&act=select" name="frm">
+					<input type="hidden" name="formhash" value="{$formhash}"/>
+					<input type="hidden" name="type" value=""/>
+					<dl class="f_l">
+						<dt><a href="#"  onclick="return confirmd(document.frm,0,'开发者')">开发者</a></dt>
+						<dd>个人：指所有以个体身份提供应用的开发者，您在注册过程中需要提供个人身份证明资料。</dd>
+					</dl>
+					<dl class="f_r">
+						<dt><a href="#" onclick="return confirmd(document.frm,1,'开发商')">开发商</a></dt>
+						<dd>企业：指所有以企业法人身份提供应用的开发者，您在注册过程中需要提供公司营业执照等证明资料。</dd>
+					</dl>	</form>				
+				</div>
+				</div>				
+			</div>
+		
+	{else if $action=='repass'}
+		{include file="menu.html"}
+			<div class="bl f_r">
+				<div class="tit f_c"><h3>修改密码</h3></div>
+				<div class="box_edit">
+					<form method="POST" action="{$url}?mod=member&act=repass" onsubmit="return FRM.check(this);">
+					<input type="hidden" name="formhash" value="{$formhash}"/>
+						<ul>
+							<li>
+								<label for="password">原密码：</label><input type="password" id="password" isw="1" msg="请输入原密码" class="text" name="password" maxlength="16">
+							</li>
+							<li>
+								<label for="passwd">新密码：</label><input type="password" id="passwd" name="passwd" isw="1" msg="请输入新密码" class="text" maxlength="16">
+							</li>
+							<li>
+								<label for="passwd">重复新密码：</label><input type="password" id="passwdcp" name="passwdcp" class="text" maxlength="16">
+							</li>
+							<li class="b_btn">
+								<input type="submit" value="确定" class="btn"><input type="reset" value="重置" class="btn">
+							</li>
+						</ul>
+					</form>
+				</div>				
+			</div>
+	{else}
+{include file="menu.html"}
+		<div class="bl f_r">
+			<div class="tit f_c">
+				<h3>会员公告</h3>
+			</div>
+				<div class="box_edit">
+					<script type="text/javascript" src="{$bbsurl}/api.php?mod=js&bid=4"></script>
+				</div>				
+			</div>
+	{/if}
+{include file="../footer.htm"}

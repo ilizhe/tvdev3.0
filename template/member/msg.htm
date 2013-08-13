@@ -1,0 +1,53 @@
+{include file="../header.htm"}
+<script language="javascript">
+
+function redirect()
+{
+	var reload = '{$reload}';
+	var url = '{$href}';
+	if(url == '')return ;
+	if( reload != '' )
+	{
+		window.parent{$reload}.location.reload();
+	}
+	if( url == 'back' )
+	{
+		window.history.back();
+	}
+	else
+	{
+		window.location.href='{$href}';
+	}
+}
+var secs = '{$dtime}';
+window.onload=function(){
+	if(secs==-1)
+	{
+		document.getElementById("tips").innerHTML='';
+	}else{
+		for(var i=secs;i>=0;i--) 
+		{ 
+			window.setTimeout("doUpdate(" + i + ")", (secs-i) * 1000); 
+		} 
+	}
+	
+}
+
+function doUpdate(num)
+{ 
+	document.getElementById("dtime").innerHTML = num ; 
+	if (num == 0){
+		redirect();
+	}	
+}
+
+</script>	
+		<div class="ctt">			
+			<div class="box_tips">
+				<h2>温馨提示</h2>
+				<p>{$msg}{if $href}<a href="{$href}" onclick="redirect();return false">确定</a>{/if}</p>
+				<p id="tips">如果您的浏览器没有自动跳转，请点击确定 <span id="dtime" style="color:red;"></span>...</p>
+			</div>			
+		</div>
+{include file="../footer.htm"}
+

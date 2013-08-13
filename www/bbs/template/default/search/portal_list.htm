@@ -1,0 +1,65 @@
+<style type="text/css">
+#ft{margin:20px 0}
+.listNews{margin-bottom: 50px;}
+.listNews h4{font-size: 18px;font-weight: bold;clear: both;margin-bottom: 10px;}
+.listNews li{padding: 10px 15px 15px;margin-bottom: 15px;overflow: hidden;zoom:1;}
+.listNews li:hover{background: #f4f4f4;}
+.listNews h4 a{color: #242424;}
+.simg{float: left;margin-right: 15px;}
+.simg,.simg img{width: 190px;height: 120px;}
+.newsInfo{overflow: hidden;zoom:1;}
+.newsInfo a{color: #2f90cb;}
+.newsInfo p{line-height: 30px;height: 90px;border-bottom: 2px solid #fff;margin-bottom: 8px;}
+.newsInfo div{height: 16px;line-height: 16px;}
+.newsInfo div span{border-right: 1px solid #000;margin-right: 10px;padding-right: 10px;}
+.newsInfo div span:last-child{border-right: 0;}
+.newsInfo div span a{margin-right: 5px;}
+.tit{border-bottom: 1px solid #dcdcdc;height: 30px;margin-bottom: 15px;margin-bottom: 10px;}
+.tit h3{border-bottom:5px solid #18b3f0;position: relative;bottom: -1px;_bottom: -2px;padding-right: 15px;float: left;font-size: 18px;color: #18b3f0;}
+.module li{width: 260px;white-space: nowrap;overflow: hidden;}
+.module li a{color: #2b2b2b;}
+.module li a:hover{color: #1d83c8;}
+.noresult em{color:#ff6c00;font-style: normal; }
+.noresult{margin-bottom: 100px;padding:30px 0 0 400px;background: url({IMGDIR}/../common/noresult.jpg) no-repeat 50px center;border: 1px solid #dad9da;border-radius: 3px;height: 230px;}
+.noresult em{font-size: 14px;font-weight: bold;margin-bottom: 20px;display: block;}
+.noresult dl{line-height: 30px;}
+.noresult dt{color: #2f90cb;font-weight: bold;}
+</style>
+<div class="tl">
+	<div class="sttl mbn">
+		<h2><!--{if $keyword}-->{lang search_result_keyword}<!--{else}-->{lang search_result}<!--{/if}--></h2>
+	</div>
+	<!--{ad/search/y mtw}-->
+	<!--{if empty($articlelist)}-->
+		<div class="noresult">
+			<em>对不起，没有找到您想要的结果</em>
+			<dl>
+				<dt>建议您</dt>
+				<dd>1. 去掉不必要的字词，如“的”、“或”等；</dd>
+				<dd>2. 精简搜索关键词，使用其中最主要的字词；</dd>
+				<dd>3. 确认关键词的拼写没有错误；</dd>
+			</dl>
+		</div>
+	<!--{else}-->
+		<div class="bm_c xld">
+			<ul class="listNews">
+				<!--{loop $articlelist $article}-->
+				<li>
+					<h4><a href="portal.php?mod=view&aid=$article[aid]" target="_blank">$article[title]</a></h4>
+					<!--{if $article[pic] !=''}-->
+					<a href="portal.php?mod=view&aid=$article[aid]" target="_blank"  class="simg"><img src="$article[pic]" /></a>
+					<!--{else}-->
+					<a href="portal.php?mod=view&aid=$article[aid]" target="_blank"  class="simg"><img src="static/image/common/nophoto.gif"/></a>
+					<!--{/if}-->
+					<div class="newsInfo">
+						<p>$article[summary]<a href="portal.php?mod=view&aid=$article[aid]" target="_blank" >[详细]</a></p>
+						<div><span><a href="home.php?mod=space&uid=$value[uid]">$article[username]</a>发表于$article[dateline]</span><span>访问：{echo get_article_num($article[aid],'viewnum')}</span><span>{echo get_article_num($article[aid],'commentnum')}条评论</span></div>
+					</div>
+				</li>
+				<!--{/loop}-->
+			</ul>
+		</div>
+		
+	<!--{/if}-->
+	<!--{if !empty($multipage)}--><div class="pgs cl mbm">$multipage</div><!--{/if}-->
+</div>

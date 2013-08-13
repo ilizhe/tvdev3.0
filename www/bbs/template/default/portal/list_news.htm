@@ -1,0 +1,128 @@
+<!--{subtemplate common/header}-->
+<!--{eval $list = array();}-->
+<!--{eval $wheresql = category_get_wheresql($cat);}-->
+<!--{eval $list = category_get_list($cat, $wheresql, $page);}-->
+
+<!--{ad/text/wp a_t}-->
+<style id="diy_style" type="text/css"></style>
+<div class="wp">
+	<!--[diy=diy1]--><div id="diy1" class="area"></div><!--[/diy]-->
+</div>
+<style type="text/css">
+.listNews{margin-bottom: 50px;}
+.listNews h4{font-size: 18px;font-weight: bold;clear: both;margin-bottom: 10px;}
+.listNews li{padding: 10px 15px 15px;margin-bottom: 15px;overflow: hidden;zoom:1;}
+.listNews li:hover{background: #f4f4f4;}
+.listNews h4 a{color: #242424;}
+.simg{float: left;margin-right: 15px;}
+.simg,.simg img{width: 190px;height: 120px;}
+.newsInfo{overflow: hidden;zoom:1;}
+.newsInfo a{color: #2f90cb;}
+.newsInfo p{line-height: 30px;height: 90px;border-bottom: 2px solid #fff;margin-bottom: 8px;}
+.newsInfo div{height: 16px;line-height: 16px;}
+.newsInfo div span{border-right: 1px solid #000;margin-right: 10px;padding-right: 10px;}
+.newsInfo div span:last-child{border-right: 0;}
+.newsInfo div span a{margin-right: 5px;}
+.tit{border-bottom: 1px solid #dcdcdc;height: 30px;margin-bottom: 15px;margin-bottom: 10px;}
+.tit h3{border-bottom:5px solid #18b3f0;position: relative;bottom: -1px;_bottom: -2px;padding-right: 15px;float: left;font-size: 18px;color: #18b3f0;}
+.flight li {
+    line-height: 24px;
+    white-space: nowrap;
+    width: 220px;
+    overflow:hidden;
+}
+.btag,.flight{margin-bottom: 10px;}
+.btag a{display: inline-block;margin: 0 5px;color: #000;}
+.btag .hottag1{color: #ff6600;font-size:30px;}
+.btag .hottag2{font-size: 24px;color: #18b3f0;}
+.btag .hottag3{font-size: 18px;color: #8c8c8c;}
+</style>
+<div id="ct" class="ct2 wp cl">
+	<div class="mn">
+		<!--{ad/articlelist/mbm hm/1}--><!--{ad/articlelist/mbm hm/2}-->
+		<!--[diy=listcontenttop]--><div id="listcontenttop" class="area"></div><!--[/diy]-->
+		<div class="bm">
+			<div class="bm_h cl">
+				<!--{if $_G[setting][rssstatus] && !$_GET['archiveid']}--><a href="portal.php?mod=rss&catid=$cat[catid]" class="y xi2 rss" target="_blank" title="RSS">{lang rss_subscribe_this}</a><!--{/if}-->
+				<!--{if ($_G['group']['allowpostarticle'] || $_G['group']['allowmanagearticle'] || $categoryperm[$catid]['allowmanage'] || $categoryperm[$catid]['allowpublish']) && empty($cat['disallowpublish'])}-->
+				<a href="portal.php?mod=portalcp&ac=article&catid=$cat[catid]" class="y xi2 addnew">{lang article_publish}</a>
+				<!--{/if}-->
+				<h1 class="xs2">$cat[catname]</h1>
+			</div>
+			<!--{if $cat[subs]}-->
+			<div class="bm_c bbda">
+				{lang sub_category}:&nbsp;&nbsp;
+				<!--{eval $i = 1;}-->
+				<!--{loop $cat[subs] $value}-->
+				<!--{if $i != 1}--><span class="pipe">|</span><!--{/if}--><a href="{echo getportalcategoryurl($value[catid]);}" class="xi2">$value[catname]</a><!--{eval $i--;}-->
+				<!--{/loop}-->
+			</div>
+			<!--{/if}-->
+			<div class="bm_c xld">
+			<ul class="listNews">
+			<!--{loop $list['list'] $value}-->
+			<!--{eval $highlight = article_title_style($value);}-->
+					<li>
+							<h4><a href="portal.php?mod=view&aid=$value[aid]" target="_blank">$value[title]</a></h4>
+							<!--{if $value[pic]}-->
+							<a href="portal.php?mod=view&aid=$value[aid]" target="_blank"  class="simg"><img src="$value[pic]" alt="$value[title]" /></a>
+							<!--{else}-->
+							<a href="portal.php?mod=view&aid=$value[aid]" target="_blank"  class="simg"><img src="static/image/common/nophoto.gif" alt="$value[title]" /></a>
+							<!--{/if}-->
+							<div class="newsInfo">
+								<p>$value[summary]<a href="portal.php?mod=view&aid=$value[aid]" target="_blank" >[详细]</a></p>
+								<div><span><a href="home.php?mod=space&uid=$value[uid]">$value[username]</a>发表于$value[dateline]</span><span>访问：{echo get_article_num($value[aid],'viewnum')}</span><span>{echo get_article_num($value[aid],'commentnum')}条评论</span></div>
+							</div>
+					</li>
+			<!--{/loop}-->
+			</ul>
+			</div>
+			<!--[diy=listloopbottom]--><div id="listloopbottom" class="area"></div><!--[/diy]-->
+		</div>
+		<!--{ad/articlelist/mbm hm/3}--><!--{ad/articlelist/mbm hm/4}-->
+		<!--{if $list['multi']}--><div class="pgs cl">{$list['multi']}</div><!--{/if}-->
+
+		<!--[diy=diycontentbottom]--><div id="diycontentbottom" class="area"></div><!--[/diy]-->
+
+	</div>
+	<div class="sd pph">
+		
+		
+		
+		<div>
+			<div class="tit f_c">
+				<h3>热门资讯</h3>						
+			</div>
+			<ul class="flight">
+			<!--{block/25}-->
+			</ul>
+		</div>
+		<div>
+			<div class="tit f_c">
+				<h3>热门标签</h3>						
+			</div>
+			<div class="btag">
+				<script src="api.php?mod=hottag"></script>
+			</div>
+		</div>			
+		<div>
+			<div class="tit f_c">
+				<h3>论坛精华</h3>						
+			</div>
+			<ul class="flight">
+			<!--{block/25}-->
+			</ul>
+		</div>
+		
+		<div class="drag">
+			<!--[diy=diy2]--><div id="diy2" class="area"></div><!--[/diy]-->
+		</div>
+		
+	</div>
+</div>
+
+<div class="wp mtn">
+	<!--[diy=diy3]--><div id="diy3" class="area"></div><!--[/diy]-->
+</div>
+
+<!--{subtemplate common/footer}-->

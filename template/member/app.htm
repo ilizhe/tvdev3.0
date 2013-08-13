@@ -1,0 +1,771 @@
+{include file="../header.htm"}
+{include file="menu.html"}
+{if $action == 'newapp'}
+	{include file="fsuploadapk.html"}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>{$nav->sub}</h3></div>				
+				<div class="box_edit">
+					<form name="newapp_form" id="newapp_form" action="{$obj->url('newapp')}" method="POST"  onsubmit="return newapp(this);" enctype="multipart/form-data">
+						<input type="hidden" name="formhash" value="{$formhash}"/>
+						<input type="hidden" name="name" value="{$appname}">
+						<ul>
+						<li class="line"></li>
+							<li class="boxname">
+								<label for="appname">应用名称：</label>
+								<select name="appname" id="appname" onChange="goUrl(this.options[this.selectedIndex]);">
+								<option value="">请选择应用名</option>
+								{foreach from=$applist key=k item=app}
+									<option value="{$url}?mod=app&act=newapp&app={$app->name}&ad={$app->isad}&pay={$app->ispay}&key={$app->appkey}" {if $app->appkey == $appkey}selected{/if}>{$app->name}
+									</option>
+								{/foreach}
+								</select>
+								<script>
+								function goUrl(obj){  
+									window.location.href=obj.value; 
+									}  
+								</script>
+							</li>
+							<li>
+								<label>APPKEY：</label><span class="c_red"><input type="text" name="key" value="{$appkey}" readOnly></span>
+							</li>
+							<li>
+								<label>开通权限：</label><span class="permission">
+								{if $pay =="1"}支付权限{/if}&nbsp;&nbsp;{if $ad =="1"}广告权限{/if}
+								{if $pay =="0" && $ad =="0"}无权限{/if}
+								</span><span>可到&nbsp;<a href="{$url}?mod=appkey&act=appkeymanage">APPKEY管理</a>&nbsp;中开通更多权限</span>
+							</li>	
+							<li class="s_img">
+								<label>应用小图标：</label>
+								<div>
+									<input type="hidden" id="appicon" name="appicon" value="" isw="1" msg="请上传应用小图标"/>						
+									<a id="image-appicon" ><img src="{$objdir}/images/appico.png"></img></a>
+									<div class="fsuploadbutton">
+									<span id="spanButtonPlaceholder_appicon"></span></div><span id="fsUploadProgress_appicon"></span>
+									<p>请上传大小2M以内的图片，推荐尺寸为100x100px，支持jpg/bmp/png/gif等格式</p>
+								</div>
+							</li>
+							<li class="b_img">
+								<label>应用大图标：</label>
+								<div>
+									<input type="hidden" id="spreadicon" name="spreadicon" value="" isw="1" msg="请上传应用大图标" />
+									<a id="image-spreadicon"><img src="{$objdir}/images/appico.png" /></a>
+									<div class="fsuploadbutton upbtn">
+									<span id="spanButtonPlaceholder_spreadicon"></span></div>
+									<span id="fsUploadProgress_spreadicon"></span>
+									<p>请上传大小2M以内的图片，推荐尺寸为140x140px，支持jpg/bmp/png/gif等格式</p>
+								</div>	
+							</li>
+							<li class="b_img">
+								<label>应用截图：</label>
+								<div class="appimglist">
+									<input type="hidden" name="apppic1" id="inputpic1" />
+									<input type="hidden" name="apppic2" id="inputpic2"></input>
+									<input type="hidden" name="apppic3" id="inputpic3"></input>
+									<input type="hidden" name="apppic4" id="inputpic4"></input>
+									<input type="hidden" name="apppic5" id="inputpic5"></input>
+									
+									<div class="appimgitem"><a id="pic1" class="apppic" ><img src="{$objdir}/images/no_img.gif"></img></a><a class="delpic" id="delpic1" style="display:none">删除</a>
+									<div class="fsuploadbutton">
+										<span id="spanButtonPlaceholder_pic1"></span>
+									</div>
+									</div>
+									
+									<div class="appimgitem"><a id="pic2" class="apppic" ><img src="{$objdir}/images/no_img.gif"></img></a><a class="delpic" id="delpic2" style="display:none">删除</a>
+									<div class="fsuploadbutton">
+										<span id="spanButtonPlaceholder_pic2"></span>
+									</div>
+									
+									</div>
+									<div class="appimgitem"><a id="pic3" class="apppic" ><img src="{$objdir}/images/no_img.gif"></img></a><a class="delpic" id="delpic3" style="display:none">删除</a>
+									<div class="fsuploadbutton">
+										<span id="spanButtonPlaceholder_pic3"></span>
+									</div>	
+									
+									</div>
+									<div class="appimgitem"><a id="pic4" class="apppic" ><img src="{$objdir}/images/no_img.gif"></img></a><a class="delpic" id="delpic4" style="display:none">删除</a>
+									<div class="fsuploadbutton">
+										<span id="spanButtonPlaceholder_pic4"></span>
+									</div>	
+									
+									</div>
+									<div class="appimgitem"><a id="pic5" class="apppic" ><img src="{$objdir}/images/no_img.gif"></img></a><a class="delpic" id="delpic5" style="display:none">删除</a>
+									<div class="fsuploadbutton">
+										<span id="spanButtonPlaceholder_pic5"></span>
+									</div>
+								
+									</div>
+									<p id="fsUploadProgress_pic"></p>
+									<p>请上传3-5张大小2M以内的应用截图，推荐尺寸为320x480px，支持jpg/bmp/png/gif等格式</p>
+								</div>
+							</li>
+							
+							<li class="b_img">
+								<label>文件上传：</label>
+								<div>
+									<input type="hidden"  name="apkfilename" id="apkfilename" isw="1" msg="请上传应用"></input>	
+									<div class="fsuploadbutton">
+										<span id="spanButtonPlaceholder_apk"></span>
+									</div>
+									<span id="fsUploadProgress_apk"></span>
+									<span id="uploadapkname"></span>
+									<p>请上传大小200M以内的应用，支持APK格式</p>
+								</div>
+							</li>
+							<li class="b_img">
+							<label>升级类型：</label>
+							<select name="upgradetype" id="upgradetype">
+								<option value="200">强制升级</option>
+								<option value="100">非强制升级</option>
+							</select>
+							</li>
+							<li>
+								<label>应用介绍：</label><textarea name="desci" value="" id="desci" isw="1" msg="应用介绍项不合规格" ></textarea>
+							</li>
+							<li>
+								<label>交互方式：</label><textarea name="attribute" value="" id="attribute" isw="1" msg="交互方式项不合规格"></textarea>
+							</li>
+							<li class="tpy">
+								<label>单机/在线：</label>
+								<select name="operatetype" id="operatetype">
+								<option value="100">单机</option>
+								<option value="200">在线</option>
+								</select>
+							</li>
+							<li class="tpy">
+								<label>应用类型：</label>
+								<select name="apptype" id="apptype">
+								<option value="apk">APK</option>
+								</select>
+							</li>
+							<li class="price">
+								<label>建议价格(元)：</label>
+								{if $pay == "1"}
+								<input type="text" name="fee" value="0" isw="1" msg="建议价格项不合规范"/>
+								{else}
+								<input type="text" name="fee" value="0" readOnly/>
+								{/if}
+							</li>
+							<li class="f_c">
+								<label>支持平台：</label>
+								<div class="platform">
+								<h2>tcl</h2>
+								<label><input type="checkbox" name="deviceseq[]" value="TCL-HS系列"/>HS系列</label>
+								<label><input type="checkbox" name="deviceseq[]" value="TCL-MS99系列"/>MS99系列</label>
+								<label><input type="checkbox" name="deviceseq[]" value="TCL-MTK5326系列"/>MTK5326系列</label>
+								<label><input type="checkbox" name="deviceseq[]" value="TCL-MS801系列"/>MS801系列</label>
+								<label><input type="checkbox" name="deviceseq[]" value="TCL-极简电视系列"/>极简电视系列</label>
+								<h2>长虹</h2>
+								<label><input type="checkbox" name="deviceseq[]" value="长虹-HS系列"/>HS系列</label>
+								<label><input type="checkbox" name="deviceseq[]" value="长虹-MTK系列"/>MTK系列</label>
+								</div>
+							</li>
+							<li class="b_btn">
+								<input type="submit" value="提交审核" name="upload_photo" class="btn" id="uploadsuccessbuttom"><input type="Reset" value="重置" class="btn"></li>
+						</ul>
+					</form>
+				</div>				
+			</div>
+		</div>
+{else if $action == 'myapp'}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>待审核作品</h3></div>	
+				<!--每页15行-->
+				<table class="tb tb_app">
+					<tr>
+						<th>应用名称</th>
+						<th>时间</th>
+						<th>版本</th>
+						<th>是否升级</th>
+						<th>应用类型</th>
+						<th>支持平台</th>
+						<th>审核状态</th>
+					</tr>
+					{foreach from=$applist key=k item=app}
+					<tr>
+						<td><a href="{$url}?mod=app&act=view&name={$app->name}&id={$app->appkey}" class="appname">{$app->name}</a></td>
+						<td>{$app->servertime}</td>
+						<td>{$app->curver}</td>
+						<td>
+						{if $app->upgrade =="0"}否
+						{else}是
+						{/if}
+						</td>
+						<td><p>{$app->apptype}</p></td>
+						<td><p>{$app->series}</p></td>
+						<td class="c_red">{$app->status}</td>
+						<!--<td class="c_red">打回</td>-->
+					</tr>
+					{/foreach}
+				</table>
+				<div class="page">
+					
+				</div>
+			</div>
+	{else if $action == 'testing'}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>审核中作品</h3></div>	
+				<!--每页15行-->
+				<table class="tb tb_app">
+					<tr>
+						<th>应用名称</th>
+						<th>时间</th>
+						<th>应用版本号</th>						
+						<th>应用类型</th>
+						<th>支持平台</th>
+						<th>审核状态</th>
+					</tr>
+					{foreach from=$applist key=k item=app}
+					<tr>
+						<td><a href="{$url}?mod=app&act=view&id={$app->appkey}">{$app->name}</a></td>
+						<td>{$app->servertime}</td>
+						<td>{$app->curver}</td>						
+						<td><p>{$app->apptype}</p></td>
+						<td><p>{$app->series}</p></td>
+						<td>{$app->status}</td>
+					</tr>
+				{/foreach}
+				</table>
+				<div class="page">
+					
+				</div>
+			</div>
+{else if $action == 'myback'}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>打回的作品</h3></div>	
+				<!--每页15行-->
+				<table class="tb tb_app">
+					<tr>
+						<th>应用名称</th>
+						<th>时间</th>
+						<th>应用版本号</th>						
+						<th>应用类型</th>
+						<th>支持平台</th>
+						<th>审核状态</th>
+						<th>操作</th>
+					</tr>
+					{foreach from=$applist key=k item=app}
+					<tr>
+						<td><a href="{$url}?mod=app&act=view&id={$app->appkey}">{$app->name}</a></td>
+						<td>{$app->servertime}</td>	
+						<td>{$app->curver}</td>						
+						<td><p>{$app->apptype}</p></td>
+						<td><p>{$app->series}</p></td>
+						<td>{$app->status}</td>
+						<td><a href="{$url}?mod=app&act=modify&id={$app->appkey}">修改</a>&nbsp;&nbsp;<a href="{$url}?mod=app&act=delapp&id={$app->appkey}&verid={$app->verid}">删除</a>&nbsp;&nbsp;<a href="{$url}?mod=app&act=backmsg&id={$app->appkey}">打回理由</a></td>
+						
+					</tr>
+				{/foreach}
+				</table>
+				<div class="page">
+					
+				</div>
+			</div>
+	{else if $action == 'backmsg'}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>打回信息</h3></div>	
+				<div class="box_edit">
+						<ul>
+							<li class="line"></li>
+							<li class="b_img">
+								<label>打回信息：</label>
+								<textarea readOnly>{$msg}</textarea>
+							</li>
+						</ul>
+					</form>
+				</div>				
+			</div>
+	{else if $action == 'online'}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>已上线作品</h3></div>	
+				<!--每页15行-->
+				<table class="tb tb_app">
+					<tr>
+						<th>应用名称</th>
+						<th>时间</th>
+						<th>最新版本号</th>						
+						<th>应用类型</th>
+						<th>支持平台</th>
+						<th>操作</th>
+					</tr>
+					{foreach from=$applist key=k item=app}
+					<tr>
+						<td><a href="{$url}?mod=app&act=view&id={$app->appkey}">{$app->name}</a></td>
+						<td>{$app->servertime}</td>	
+						<td>{$app->curver}</td>						
+						<td><p>{$app->apptype}</p></td>
+						<td><p>{$app->series}</p></td>
+						<td><a href="{$url}?mod=app&act=applyoff&id={$app->appkey}&name={$app->name}" >申请下线</a>&nbsp;&nbsp;<a href="{$url}?mod=app&act=addnew&n={$app->name}&k={$app->appkey}" >增加版本</a></td>
+					</tr>
+				{/foreach}
+				</table>
+				<div class="page">
+					
+				</div>
+			</div>
+	{else if $action == 'addnew'}
+{include file="addnew.htm"}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>新增版本</h3></div>	
+				<div class="box_edit">
+					<form action="{$obj->url('addnew')}" name="addnew" method="POST" onsubmit="return FRM.check(this)"  enctype="multipart/form-data">
+						<input type="hidden" name="formhash" value="{$formhash}"/>
+						<input type="hidden" name="k" value="{$k}" />
+						<input type="hidden" name="n" value="{$n}" />
+						<ul>
+							<li class="line"></li>
+							<li class="b_img">
+								<label>文件上传：</label>
+									<div>
+									<input type="hidden"  name="filename" id="filename" isw="1" msg="请上传应用"></input>
+									<div style="padding-right: 5px;">
+										<span id="spanButtonPlaceholder"></span><div id="fsUploadProgress"></div>
+									</div>
+									<span id="uploadapkname"></span>
+									<p>请上传大小200M以内的应用，支持APK格式</p>
+								</div>
+							</li>
+							<li class="b_img">
+							<label>升级类型：</label>
+							<select name="upgradetype" id="upgradetype">
+								<option value="200">强制升级</option>
+								<option value="100">非强制升级</option>
+							</select>
+							</li>
+							<li class="b_btn">
+							<input type="submit" value="提交" name="upload_photo" class="btn" id="uploadsuccessbuttom" >
+							<input type="button" value="取消" class="btn" onclick="javascript:window.location.href='{$url}?mod=app&act=online'"></li>
+						</ul>
+					</form>
+				</div>				
+			</div>
+	{else if $action == 'applyoff'}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>申请下线</h3></div>	
+				<div class="box_edit">
+					<form action="{$obj->url('applyoff')}" method="POST"  onsubmit="return FRM.check(this)" enctype="multipart/form-data">
+					<input type="hidden" name="formhash" value="{$formhash}"/>
+					<input type="hidden" name="id" value="{$appid}" />
+					<input type="hidden" name="appname" value="{$appname}">
+						<ul>
+							<li class="line"></li>
+							<li>
+								<label>申请下线理由：</label><textarea name="memo"></textarea>
+							</li>
+							
+							<li class="b_btn">
+								<input type="submit" value="提交审核" class="btn"><input type="button" value="取消" class="btn" onclick="javascript:window.location.href='{$url}?mod=app&act=online'"></li>
+						</ul>
+					</form>
+				</div>				
+			</div>
+{else if $action == 'offapp'}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>申请下线作品</h3></div>	
+				<!--每页15行-->
+				<table class="tb tb_app">
+					<tr>
+						<th>应用名称</th>
+						<th>时间</th>
+						<th>应用版本号</th>						
+						<th>应用类型</th>
+						<th>支持平台</th>
+						<th>审核状态</th>
+					</tr>
+					{foreach from=$applist key=k item=app}
+					<tr>
+						<td><a href="{$url}?mod=app&act=view&id={$app->appkey}" class="appname">{$app->name}</a></td>
+						<td>{$app->servertime}</td>	
+						<td>{$app->curver}</td>						
+						<td><p>{$app->apptype}</p></td>
+						<td><p>{$app->series}</p></td>
+						<td>{$app->status}</td>
+					</tr>
+					{/foreach}
+				</table>
+				<div class="page">
+					
+				</div>
+			</div>
+{else if $action == 'offback'}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>下线打回作品</h3></div>	
+				<!--每页15行-->
+				<table class="tb tb_app">
+					<tr>
+						<th>应用名称</th>
+						<th>时间</th>
+						<th>应用版本号</th>						
+						<th>应用类型</th>
+						<th>支持平台</th>
+						<th>审核状态</th>
+						<th>操作</th>
+					</tr>
+					{foreach from=$applist key=k item=app}
+					<tr>
+						<td><a href="{$url}?mod=app&act=view&id={$app->appkey}" class="appname">{$app->name}</a></td>
+						<td>{$app->servertime}</td>	
+						<td>{$app->curver}</td>						
+						<td><p>{$app->apptype}</p></td>
+						<td><p>{$app->series}</p></td>
+						<td>{$app->status}</td>
+						<td><a href="{$url}?mod=app&act=backmsg&id={$app->appkey}">打回理由</a></td>
+					</tr>
+					{/foreach}
+				</table>
+				<div class="page">
+					
+				</div>
+			</div>			
+{else if $action == 'offline'}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>已下线作品</h3></div>	
+				<!--每页15行-->
+				<table class="tb tb_app">
+					<tr>
+						<th>应用名称</th>
+						<th>时间</th>
+						<th>应用版本号</th>						
+						<th>应用类型</th>
+						<th>支持平台</th>
+					</tr>
+					{foreach from=$applist key=k item=app}
+					<tr>
+						<td><a href="{$url}?mod=app&act=view&id={$app->appkey}" class="appname">{$app->name}</a></td>
+						<td>{$app->servertime}</td>	
+						<td>{$app->curver}</td>						
+						<td><p>{$app->apptype}</p></td>
+						<td><p>{$app->series}</p></td>
+					</tr>
+					{/foreach}
+				</table>
+				<div class="page">
+						
+				</div>
+			</div>
+	
+{else if $action == 'modify'}
+{include file="fsuploadapk.html"}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>修改应用</h3></div>	
+				<div class="box_edit">
+					<form action="{$obj->url('modify')}" method="POST"  onsubmit="return modifyapp(this);" enctype="multipart/form-data" name="modify_form" id="modify_form">
+						<input type="hidden" name="formhash" value="{$formhash}"/>
+						<input type="hidden" name="id" value="{$A->appkey}" />
+						<ul>
+							<li class="line"></li>
+							<li class="boxname">
+								<label for="appname">应用名称：</label><input type="text" name="name" isw="1" msg="请填写应用名称" value="{$A->name}" readOnly/>
+							</li>
+							<li>
+								<label>APPKEY：</label><span class="c_red">{$A->appkey}</span>
+							</li>
+							<li>
+								<label>开通权限：</label><span class="permission">
+								{if $A->ispay=="1"}
+								已开通支付权限
+								{/if}
+								{if $A->isad == "1"}
+								已开通广告权限
+								{/if}
+								{if $A->isad =="0" && $A->ispay=="0"}
+								无权限
+								{/if}
+								</span><span>可到&nbsp;<a href="{$url}?mod=appkey&act=appkeymanage">APPKEY管理</a>&nbsp;中开通更多权限</span>
+							</li>
+							<li class="s_img">							
+								<!--先是上传按钮，上传后显示图片-->
+								<label>应用小图标：</label>(注：鼠标点击修改)
+								<div>
+								<input type="hidden" id="appicon" name="appicon" value="" />						
+									<a id="image-appicon">
+									{if $A->appicon != ""}
+										<img src="{$A->appicon}"></img>
+									{else}	
+									<img src="{$objdir}/images/appico.png"></img>
+									{/if}
+								</a>
+								<div class="fsuploadbutton">
+								<span id="spanButtonPlaceholder_appicon"></span></div>
+								<span id="fsUploadProgress_appicon"></span>
+								<p>请上传大小2M以内的图片，推荐尺寸为100x100px，支持jpg/bmp/png/gif等格式</p>
+								</div>
+							</li>
+							<li class="b_img">							
+								<label>应用大图标：</label>(注：鼠标点击修改)
+								<div>
+								<input type="hidden" id="spreadicon" name="spreadicon" value="" />
+									<a id="image-spreadicon">
+									{if $A->spreadicon != ""}
+									<img src="{$A->spreadicon}"></img>
+									{else}
+									<img src="{$objdir}/images/spreadicon.png"></img>
+									{/if}
+									</a>
+									<div class="fsuploadbutton upbtn">
+									<span id="spanButtonPlaceholder_spreadicon"></span></div>
+									<span id="fsUploadProgress_spreadicon"></span>
+									<p>请上传大小2M以内的图片，推荐尺寸为140x140px，支持jpg/bmp/png/gif等格式</p>
+								</div>
+							</li>
+							<li class="b_img">
+								<label>应用截图：</label>
+								<div class="appimglist">
+								
+									<input type="hidden" name="apppic1" id="inputpic1"></input>
+									<input type="hidden" name="apppic2" id="inputpic2"></input>
+									<input type="hidden" name="apppic3" id="inputpic3"></input>
+									<input type="hidden" name="apppic4" id="inputpic4"></input>
+									<input type="hidden" name="apppic5" id="inputpic5"></input>
+									
+									<div class="appimgitem">
+										{if $A->apppic1 !=''}<a id="pic1" class="apppic"><img src="{$A->apppic1}" ></img></a>{else}<a id="pic1" class="apppic"><img src="{$objdir}/images/no_img.gif"></img></a>{/if}<div style="display: inline; border: solid 1px #7FAAFF; background-color: #C5D9FF; padding: 2px;">
+											<span id="spanButtonPlaceholder_pic1"></span>
+										</div>
+									</div>
+									<div class="appimgitem">
+										{if $A->apppic2 !=''}<a id="pic2" class="apppic"><img src="{$A->apppic2}"></img></a> <a class="delpic" id="delpic2" >删除</a>{else}<a id="pic2" class="apppic"><img src="{$objdir}/images/no_img.gif"></img></a><a class="delpic" id="delpic2" style="display:none">删除</a>{/if}
+											<div class="fsuploadbutton">
+												<span id="spanButtonPlaceholder_pic2"></span>
+											</div>
+									</div>
+									<div class="appimgitem">{if $A->apppic3 !=''}<a id="pic3" class="apppic"><img src="{$A->apppic3}" ></img></a> <a class="delpic" id="delpic3" >删除</a>{else}<a id="pic3" class="apppic"><img src="{$objdir}/images/no_img.gif"></img></a><a class="delpic" id="delpic3" style="display:none">删除</a>{/if}
+										<div class="fsuploadbutton">
+										<span id="spanButtonPlaceholder_pic3"></span>
+										</div>
+									</div>
+									<div class="appimgitem">{if $A->apppic4 !=''}<a id="pic4" class="apppic"><img src="{$A->apppic4}"></img></a> <a class="delpic" id="delpic4" >删除</a>{else}<a id="pic4" class="apppic"><img src="{$objdir}/images/no_img.gif"></img></a><a class="delpic" id="delpic4" style="display:none">删除</a>{/if}
+									<div class="fsuploadbutton">
+										<span id="spanButtonPlaceholder_pic4"></span>
+									</div>
+									</div>
+									<div class="appimgitem">{if $A->apppic5 !=''}<a id="pic5" class="apppic"><img src="{$A->apppic5}"></img></a> <a class="delpic" id="delpic5" >删除</a>{else}<a id="pic5" class="apppic"><img src="{$objdir}/images/no_img.gif"></img></a><a class="delpic" id="delpic5" style="display:none">删除</a>{/if}
+									<div class="fsuploadbutton">
+										<span id="spanButtonPlaceholder_pic5"></span>
+									</div>
+									</div>
+									<p id="fsUploadProgress_pic"></p>
+									<p>请上传3-5张大小2M以内的应用截图，推荐尺寸为320x480px，支持jpg/bmp/png/gif等格式</p>
+								</div>
+							</li>
+							<li class="b_img">
+								<label>文件上传：</label>
+								<div>
+									<input type="hidden"  name="apkfilename"></input>
+									<div class="fsuploadbutton">
+										<span id="spanButtonPlaceholder_apk"></span>
+									</div>
+									<span id="fsUploadProgress_apk"></span>
+									<span id="uploadapkname"></span>
+									<p>请上传大小50M以内的应用，支持APK格式</p>
+								</div>	
+							</li>
+							<li class="b_img">
+							<label>升级类型：</label>
+							<select name="upgradetype" id="upgradetype">
+								<option value="200">强制升级</option>
+								<option value="100">非强制升级</option>
+							</select>
+							</li>
+							
+							<li>
+								<label>应用介绍：</label><textarea name="desci" id="desci" isw="1" msg="应用介绍项不合规范">{$A->desci}</textarea>
+							</li>
+							<li>
+								<label>交互方式：</label><textarea name="attribute" id="attribute" isw="1" msg="交互方式项不合规范">{$A->attribute}</textarea>
+							</li>
+							<li class="tpy">
+								<label>单机/在线：</label>
+								<select name="operatetype" id="operatetype">
+									<option value="100">单机</option>
+									<option value="200">在线</option>
+								</select>
+							</li>
+							<li class="tpy">
+								<label>应用类型：</label>
+								<select name="apptype" id="apptype">
+									<option value="apk">APK</option>
+								</select>
+							</li>
+							<li class="price">
+								<label>建议价格(元)：</label>
+								{if $A->ispay == "1"}
+								<input type="text" name="fee" value="{$A->fee}" id="fee" isw="1" msg="建议价格项不合规范"/>
+								{/if}
+								{if $A->ispay =="0"}
+								<input type="text" name="fee" value="{$A->fee}" readonly/>
+								{/if}
+							</li>
+							<li class="f_c">
+								<label>支持平台：</label>
+								<div class="platform">
+										<h2>tcl</h2>
+										<label><input type="checkbox" name="deviceseq[]" value="TCL-HS系列"/>HS系列</label>
+										<label><input type="checkbox" name="deviceseq[]" value="TCL-MS99系列"/>MS99系列</label>
+										<label><input type="checkbox" name="deviceseq[]" value="TCL-MTK5326系列"/>MTK5326系列</label>
+										<label><input type="checkbox" name="deviceseq[]" value="TCL-MS801系列"/>MS801系列</label>
+										<label><input type="checkbox" name="deviceseq[]" value="TCL-极简电视系列"/>极简电视系列</label>
+										<h2>长虹</h2>
+										<label><input type="checkbox" name="deviceseq[]" value="长虹-HS系列"/>HS系列</label>
+										<label><input type="checkbox" name="deviceseq[]" value="长虹-MTK系列"/>MTK系列</label>			
+									<script>
+									var seq = new Array();
+									{foreach from=$seq item=s }
+									seq[seq.length] = '{$s}';
+									{/foreach}
+									$(document).ready(function(){
+										$("#operatetype").val('{$A->operatetype}');
+										$("#apptype").val('{$A->apptype}');
+										$("#upgradetype").val('{$A->upgrade}');
+										$("input:checkbox").each(function(){
+											for(i=0;i<seq.length;i++)
+											{
+												if( $(this).attr("value")==seq[i] )
+												{
+													$(this).attr("checked",true);
+												}
+											}
+										});
+									});
+									</script>
+								</div>
+							</li>
+							<li class="b_btn">
+							<input type="submit" value="提交更新" class="btn"><input type="reset" value="重置" class="btn"></li>
+						</ul>
+					</form>						
+				</div>
+				<table class="tb tb_app">
+						<tr>
+							<th>文件名称</th>
+							<th>升级类型</th>
+							<th>状态</th>
+						</tr>
+						<tr>
+							<td>{$A->name}</td>
+							<td>{$u->upgradetype}</td>
+							<td><p>{$A->status}</p></td>
+						</tr>
+					</table>
+			</div>
+					
+	{else if $action == 'view'}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>查看应用</h3></div>	
+				<div class="box_edit">
+					<form action="{$obj->url('modify')}" method="POST"  onsubmit="return FRM.check(this)" enctype="multipart/form-data">
+						<input type="hidden" name="formhash" value="{$formhash}"/>
+						<input type="hidden" name="id" value="{$A->id}" />
+						<ul>
+							<li class="line"></li>
+							<li class="boxname">
+								<label for="appname">应用名称：</label><input type="text" name="name" isw="1" msg="请填写应用名称" value="{$A->name}" readOnly/>
+							</li>
+							<li>
+								<label>APPKEY：</label><span class="c_red">{$A->appkey}</span>
+							</li>
+							<li>
+								<label>开通权限：</label><span class="permission">
+								{if $A->ispay=="1"}
+								已开通支付权限
+								{/if}
+								{if $A->isad == "1"}
+								已开通广告权限
+								{/if}
+								{if $A->isad =="0" && $A->ispay=="0"}
+								无权限
+								{/if}
+								</span><span>可到&nbsp;<a href="{$url}?mod=appkey&act=appkeymanage">APPKEY管理</a>&nbsp;中开通更多权限</span>
+							</li>
+							<li class="b_img">
+								<!--先是上传按钮，上传后显示图片-->
+								<label>应用小图标：</label>
+								<div>
+								<a id="image-appicon">{if $A->appicon != ""}<img src="{$A->appicon}">{/if}</a>
+								</div>
+							</li>
+							<li class="b_img">
+								<label>应用大图标：</label>
+								<div>
+								<a id="image-spreadicon">{if $A->spreadicon != ""}<img src="{$A->spreadicon}">{/if}</a>
+								</div>
+							</li>
+							<li class="b_img">
+								<label>应用截图：</label>
+								<div class="appimglist">
+									{foreach from=$apppic key=picKey item=pic2}
+										{if $pic2 != ""}
+											<div class="appimgitem"><a class="apppic" ><img src="{$pic2}"></img></a></div>
+										{/if}
+									{/foreach}
+
+								</div>
+							</li>
+							<li>
+								<label>应用介绍：</label><textarea name="desci" readOnly>{$A->desci}</textarea>
+							</li>
+							<li>
+								<label>交互方式：</label><textarea name="attribute" readOnly>{$A->attribute}</textarea>
+							</li>
+							<li class="tpy">
+								<label>单机/在线：</label>
+								{$A->operatetype}
+							</li>
+							<li class="tpy">
+								<label>应用类型：</label>
+								{$A->apptype}
+							</li>
+							<li class="price">
+								<label>建议价格(元)：</label><input type="text" name="fee" value="{$A->fee}" readOnly/>
+							</li>
+							<li class="f_c">
+								<label>支持平台：</label>
+								<div class="platform">
+									{$A->series}
+								</div>
+							</li>
+						</ul>
+					</form>
+				</div>				
+			<table class="tb tb_app">
+					<tr>
+						<th>文件名称</th>
+						<th>升级类型</th>
+						<th>状态</th>
+					</tr>
+					<tr>
+						<td>{$A->name}</td>
+						<td>{if $u->upgradetype == "200"}强制升级{else}非强制升级{/if}</td>
+						<td><p>{$A->status}</p></td>
+					</tr>
+				</table>	
+		</div>
+{else if $action == 'applog'}
+		<div class="bl f_r">
+			<div class="tit f_c"><h3>操作日志</h3></div>	
+	<div class="produce" style="position: relative;">
+		<table>
+			<tr class="td_top">
+				<td>流水号</td>
+				<td>应用名称</td>
+				<td>执行操作</td>
+				<td>当前状态</td>
+				<td>打回信息</td>
+				<td>更新时间</td>				
+			</tr>
+			{foreach from=$applist key=k item=app}
+			<tr>
+				<td>{$app->id}</td>
+				<td><a href="{$url}?mod=app&act=view&id={$app->appid}">{$app->name}</a></td>
+				<td>{$app->type}</td>
+				<td>{$app->dstatus}</td>
+				<td>{if $app->status=="850" || $app->status=="400" }<a href="{$url}?mod=app&act=backmsg&id={$app->id}">查看</a>{/if}</td>
+				<td>{$app->dtime}</td>
+			</tr>
+			{/foreach}
+		</table>
+		<div class="paging">
+		
+		</div>
+	</div>
+{/if}
+{include file="../footer.htm"}

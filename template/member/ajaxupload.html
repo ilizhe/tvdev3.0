@@ -1,0 +1,388 @@
+ <script type="text/javascript">
+$(document).ready(function(){
+	 var imageUploader = $('#image-appicon');
+	 new AjaxUpload(imageUploader, {
+	 action: '{$wwwurl}/?act=swf&mod=upload',
+	 data:{
+         width:"100",
+         height:"100"
+     },
+	 name: 'Filedata',
+	 responseType: 'json',
+	 onChange: function(file, extension){
+	      if (!(extension && /^(jpg|png|bmp|gif)$/i.test(extension))){
+	                 alert('Error: 无效的图片文件.');
+	                 return false;
+	      }
+	 },
+	 onSubmit: function(file, extension){
+	 if (!(extension && /^(jpg|png|bmp|gif)$/i.test(extension))){
+	                 alert('Error: 无效的图片文件.');
+	                 return false;
+	      }
+	 showLoading('上传中');
+	 },
+	 onComplete: function(file, json){
+	 if(json.error){
+		 alert(json.error);
+	 }else{
+		 imageUploader.html("<img src=\""+json.url+json.newfn+"\"></img>");
+	 	 $("input[name=appicon]").val(json.filename);
+
+	 }
+	 hideLoading();
+	 }
+	 });
+	 
+//应用大图标
+	 var imagespreadicon = $('#image-spreadicon');
+	 new AjaxUpload(imagespreadicon, {
+	 action: '{$wwwurl}/?act=swf&mod=upload',
+	 data:{
+         width:"125",
+         height:"108"
+     },
+	 name: 'Filedata',
+	 responseType: 'json',
+	 onChange: function(file, extension){
+	      if (!(extension && /^(jpg|png|bmp|gif)$/i.test(extension))){
+	                 alert('Error: 无效的图片文件.');
+	                 return false;
+	      }
+	 },
+	 onSubmit: function(file, extension){
+	 if (!(extension && /^(jpg|png|bmp|gif)$/i.test(extension))){
+	                 alert('Error: 无效的图片文件.');
+	                 return false;
+	      }
+	 showLoading('上传中');
+	 },
+	 onComplete: function(file, json){
+	 if(json.error){
+		 alert(json.error);
+	 }else{
+		 imagespreadicon.html("<img src=\""+json.url+json.newfn+"\"></img>");
+	 	 $("input[name=spreadicon]").val(json.filename);
+
+	 }
+	 hideLoading();
+	 }
+	 });
+
+	 //应用截图
+	 var pic1 = $('#pic1');
+	 new AjaxUpload(pic1, {
+	 action: '{$wwwurl}/?act=swf&mod=upload',
+	 data:{
+         width:"185",
+         height:"120"
+     },
+	 name: 'Filedata',
+	 responseType: 'json',
+	 onChange: function(file, extension){
+	      if (!(extension && /^(jpg|png|bmp|gif)$/i.test(extension))){
+	                 alert('Error: 无效的图片文件.');
+	                 return false;
+	      }
+	 },
+	 onSubmit: function(file, extension){
+	 if (!(extension && /^(jpg|png|bmp|gif)$/i.test(extension))){
+	                 alert('Error: 无效的图片文件.');
+	                 return false;
+	      }
+	 showLoading('上传中');
+	 },
+	 onComplete: function(file, json){
+	 if(json.error){
+		 alert(json.error);
+	 }else{
+		 pic1.html("<img src=\""+json.url+json.newfn+"\"></img>");
+		 $("#inputpic1").val(json.filename);
+		 $("#delpic1").show();
+	 }
+	 hideLoading();
+	 }
+	 });
+
+	 var pic2 = $('#pic2');
+	 new AjaxUpload(pic2, {
+	 action: '{$wwwurl}/?act=swf&mod=upload',
+	 data:{
+         width:"185",
+         height:"120"
+     },
+	 name: 'Filedata',
+	 responseType: 'json',
+	 onChange: function(file, extension){
+	      if (!(extension && /^(jpg|png|bmp|gif)$/i.test(extension))){
+	                 alert('Error: 无效的图片文件.');
+	                 return false;
+	      }
+	 },
+	 onSubmit: function(file, extension){
+	 if (!(extension && /^(jpg|png|bmp|gif)$/i.test(extension))){
+	                 alert('Error: 无效的图片文件.');
+	                 return false;
+	      }
+	 showLoading('上传中');
+	 },
+	 onComplete: function(file, json){
+	 if(json.error){
+		 alert(json.error);
+	 }else{
+		 pic2.html("<img src=\""+json.url+json.newfn+"\"></img>");
+		 $("#inputpic2").val(json.filename);
+		 $("#delpic2").show();
+	 }
+	 hideLoading();
+	 }
+	 });
+
+	 var pic3 = $('#pic3');
+	 new AjaxUpload(pic3, {
+	 action: '{$wwwurl}/?act=swf&mod=upload',
+	 data:{
+         width:"185",
+         height:"120"
+     },
+	 name: 'Filedata',
+	 responseType: 'json',
+	 onChange: function(file, extension){
+	      if (!(extension && /^(jpg|png|bmp|gif)$/i.test(extension))){
+	                 alert('Error: 无效的图片文件.');
+	                 return false;
+	      }
+	 },
+	 onSubmit: function(file, extension){
+	 if (!(extension && /^(jpg|png|bmp|gif)$/i.test(extension))){
+	                 alert('Error: 无效的图片文件.');
+	                 return false;
+	      }
+	 showLoading('上传中');
+	 },
+	 onComplete: function(file, json){
+	 if(json.error){
+		 alert(json.error);
+	 }else{
+		 pic3.html("<img src=\""+json.url+json.newfn+"\"></img>");
+		 $("#inputpic3").val(json.filename);
+		 $("#delpic3").show();
+	 }
+	 hideLoading();
+	 }
+	 });
+
+	 var pic4 = $('#pic4');
+	 new AjaxUpload(pic4, {
+	 action: '{$wwwurl}/?act=swf&mod=upload',
+	 data:{
+         width:"185",
+         height:"120"
+     },
+	 name: 'Filedata',
+	 responseType: 'json',
+	 onChange: function(file, extension){
+	      if (!(extension && /^(jpg|png|bmp|gif)$/i.test(extension))){
+	                 alert('Error: 无效的图片文件.');
+	                 return false;
+	      }
+	 },
+	 onSubmit: function(file, extension){
+	 if (!(extension && /^(jpg|png|bmp|gif)$/i.test(extension))){
+	                 alert('Error: 无效的图片文件.');
+	                 return false;
+	      }
+	 showLoading('上传中');
+	 },
+	 onComplete: function(file, json){
+	 if(json.error){
+		 alert(json.error);
+	 }else{
+		 pic4.html("<img src=\""+json.url+json.newfn+"\"></img>");
+		 $("#inputpic4").val(json.filename);
+		 $("#delpic4").show();
+	 }
+	 hideLoading();
+	 }
+	 });
+
+	 var pic5 = $('#pic5');
+	 new AjaxUpload(pic5, {
+	 action: '{$wwwurl}/?act=swf&mod=upload',
+	 data:{
+         width:"185",
+         height:"120"
+     },
+	 name: 'Filedata',
+	 responseType: 'json',
+	 onChange: function(file, extension){
+	      if (!(extension && /^(jpg|png|bmp|gif)$/i.test(extension))){
+	                 alert('Error: 无效的图片文件.');
+	                 return false;
+	      }
+	 },
+	 onSubmit: function(file, extension){
+	 if (!(extension && /^(jpg|png|bmp|gif)$/i.test(extension))){
+	                 alert('Error: 无效的图片文件.');
+	                 return false;
+	      }
+	 showLoading('上传中');
+	 },
+	 onComplete: function(file, json){
+	 if(json.error){
+		 alert(json.error);
+	 }else{
+		 pic5.html("<img src=\""+json.url+json.newfn+"\"></img>");
+		 $("#inputpic5").val(json.filename);
+		 $("#delpic5").show();
+	 }
+	 hideLoading();
+	 }
+	 });
+
+	 $(".delpic",this).live("click",function(){
+		 $(this).prev().find('img').attr('src',"{$objdir}/images/no_img.gif")
+		 $(this).hide();
+		 var str=(this.id).replace(/del/i,"input");
+		 $("#"+str).attr("value",'del');
+	 });
+
+	 //上传应用
+	 var apk = $('#apk');
+	 new AjaxUpload(apk, {
+	 action: '{$wwwurl}/?act=swf&mod=upload',
+	 name: 'Filedata',
+	 responseType: 'json',
+	 onChange: function(file, extension){
+	      if (!(extension && /^(apk)$/i.test(extension))){
+	                 alert('Error: 无效的apk文件.');
+	                 return false;
+	      }
+	 },
+	 onSubmit: function(file, extension){
+	 if (!(extension && /^(apk)$/i.test(extension))){
+	                 alert('Error: 无效的apk文件.');
+	                 return false;
+	      }
+	 showLoading('上传中');
+	 },
+	 onComplete: function(file, json){
+	 if(json.error){
+		 alert(json.error);
+	 }else{
+		  $("input[name=apkfilename]").val(json.filename);
+		  $("#uploadapkname").html(json.filename);
+	 }
+	 hideLoading();
+	 }
+	 });
+	
+ });
+
+//添加app
+function newapp(t){
+	var bool = FRM.check(t);
+	var _this=$("#newapp_form");
+	 if(bool){
+		 var flag=false;
+			for (var i=1;i<6;i++){
+				var value=$("input[name=apppic"+i+"]").val();
+				if(value !=''){
+					flag=true;
+				}	
+			}
+			if(!flag){
+				alert("应用截图不能为空");
+				return false;
+			}
+		 showLoading('提交中');
+		 $.ajax( {
+				global: false,
+				type: "post",
+				url: _this.attr( "action" ),
+				data: _this.serialize(),
+				context: _this,
+				success: function(data){
+			 		hideLoading();
+			 		if(data.error)
+				 		alert(data.error);
+			 		else
+				 		window.location.href=data.success;
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown){
+					hideLoading();
+					alert("网络繁忙，请稍后再试");
+				},
+				dataType: "json"
+			} );
+	 }
+	 return false;
+}
+
+//修改app
+function modifyapp(t){
+	var bool = FRM.check(t);
+	var _this=$("#modify_form");
+	 if(bool){
+		 showLoading('提交中');
+		 $.ajax( {
+				global: false,
+				type: "post",
+				url: _this.attr( "action" ),
+				data: _this.serialize(),
+				context: _this,
+				success: function(data){
+			 		hideLoading();
+			 		if(data.error)
+				 		alert(data.error);
+			 		else
+				 		window.location.href=data.success;
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown){
+					hideLoading();
+					alert("网络繁忙，请稍后再试");
+				},
+				dataType: "json"
+			} );
+	 }
+	 return false;
+}
+
+ var loadingSign;
+ function showLoading(message)
+ {
+ 	if((undefined == message) || (null == message)){
+ 		message = 'Loading';
+ 	}
+
+ 	var loadingHtml = '<div id="loading"><img src="{$objdir}/images/loading.gif" title="Loading" alt="loading" /><p id="loading-message">' + message + '</p></div>';
+ 	$('body').append(loadingHtml);
+ 	$('#loading').css('width', '200px');
+ 	$('#loading').css('left', '50%');
+ 	$('#loading').css('margin-left', '-100px');
+ 	$('#loading').css('top', '50%');
+ 	$('#loading').css('margin-top', '-30px');
+ 	$('#loading').css('display', 'block');
+ 	$("#loading").css('position','fixed').css('z-index','1002');
+ 	$("#zhezhao").show();
+ 	loadingSign = window.setInterval(function(){
+ 		if($('#loading-message').html().length < (message.length + 6)){
+ 			$('#loading-message').html($('#loading-message').html() + '.');
+ 		}else{
+ 			$('#loading-message').html(message);
+ 		}
+ 	}, 400);
+ }
+
+ /**
+  * 隐藏loading层
+  * 
+  * @return void
+  */
+ function hideLoading()
+ {
+ 	window.clearInterval(loadingSign);
+ 	$('#loading').remove();
+ 	$("#zhezhao").hide();
+ }
+ </script>

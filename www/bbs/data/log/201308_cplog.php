@@ -1,0 +1,13 @@
+<?PHP exit;?>	1376357050	admin	1	127.0.0.1		GET={}; POST={};
+<?PHP exit;?>	1376357055	admin	1	127.0.0.1	index	GET={}; POST={};
+<?PHP exit;?>	1376357060	admin	1	127.0.0.1	tools	GET={operation=updatecache; }; POST={};
+<?PHP exit;?>	1376357062	admin	1	127.0.0.1	tools	GET={operation=updatecache; step=2; type={0=data; 1=tpl; 2=blockclass; }; confirmed=确定; }; POST={type={0=data; 1=tpl; 2=blockclass; }; confirmed=确定; };
+<?PHP exit;?>	1376357062	admin	1	127.0.0.1	tools	GET={operation=updatecache; step=3; type=data_tpl_blockclass; }; POST={};
+<?PHP exit;?>	1376371338	admin	1	127.0.0.1		GET={}; POST={};
+<?PHP exit;?>	1376371340	admin	1	127.0.0.1	index	GET={}; POST={};
+<?PHP exit;?>	1376371342	admin	1	127.0.0.1	nav	GET={}; POST={};
+<?PHP exit;?>	1376371396	admin	1	127.0.0.1	nav	GET={operation=headernav; displayordernew={1=1; 2=1; 48=2; 49=2; 50=3; 51=4; 9=5; 52=5; 5=6; 53=7; 6=9; 7=10; 13=13; }; namenew={1=门户; 2=首页; 48=TV应用; 49=应用软件; 50=TV资讯; 51=沙龙活动; 9=广播; 52=开发者; 5=游戏; 53=帮助中心; 6=插件; 7=帮助; 13=相册; }; subtypenew={}; defaultindex=forum.php; availablenew={2=1; 48=1; 50=1; 51=1; 9=1; 52=1; 5=1; 53=1; }; urlnew={48=http://app.ltest.com/; 49=http://www.ltest.com/app.html; 50=portal.php?mod=list&amp;catid=1; 51=http://www.ltest.com/salon.html; 52=http://www.ltest.com/?mod=dev&amp;act=developer; 53=http://www.ltest.com/?mod=help; }; }; POST={displayordernew={1=1; 2=1; 48=2; 49=2; 50=3; 51=4; 9=5; 52=5; 5=6; 53=7; 6=9; 7=10; 13=13; }; namenew={1=门户; 2=首页; 48=TV应用; 49=应用软件; 50=TV资讯; 51=沙龙活动; 9=广播; 52=开发者; 5=游戏; 53=帮助中心; 6=插件; 7=帮助; 13=相册; }; subtypenew={}; defaultindex=forum.php; availablenew={2=1; 48=1; 50=1; 51=1; 9=1; 52=1; 5=1; 53=1; }; urlnew={48=http://app.ltest.com/; 49=http://www.ltest.com/app.html; 50=portal.php?mod=list&amp;catid=1; 51=http://www.ltest.com/salon.html; 52=http://www.ltest.com/?mod=dev&amp;act=developer; 53=http://www.ltest.com/?mod=help; }; };
+<?PHP exit;?>	1376371397	admin	1	127.0.0.1	nav	GET={operation=headernav; }; POST={};
+<?PHP exit;?>	1376371886	admin	1	127.0.0.1		GET={}; POST={};
+<?PHP exit;?>	1376371887	admin	1	127.0.0.1	index	GET={}; POST={};
+<?PHP exit;?>	1376371891	admin	1	127.0.0.1	mynav	GET={operation=help; }; POST={};

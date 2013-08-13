@@ -1,0 +1,142 @@
+{include file="../header.htm"}
+
+{include file="menu.html"}
+{include file="submenu.htm"}
+
+
+{if $action == "info" }
+{GF::PCTJS("region.js")}
+<script>
+$(document).ready(function(){
+	PCT.init("#provid","#cityid","#townid");
+	$("#provid").change(PCT.provc);
+	$("#cityid").change(PCT.cityc);
+	PCT.defval('{$U->provid}','{$U->cityid}','{$U->townid}');
+});
+</script>
+<div class="my_app">
+	<h2>资料修改</h2>
+</div>
+<div class="produce messages">
+	<div class="person_ct clearfix">
+		<form method="POST" action="{$url}?mod={$module}&act=info">
+		<input type="hidden" name="formhash" value="{$formhash}"/>
+		<h4><span>开发者信息</span></h4>
+		<div class="kfz">
+			<p><var>账号：</var>{$U->devname}</p>
+			<p><var>账户性质：</var>{if $U->status == '800'}已签约{else}未签约用户<a href="{$obj->url('upgrade')}">申请签约</a>{/if}</p>
+			<p class="p_block"><var>注册时间：</var>{date('Y-m-d H:i:s',$U->createtime)}</p>
+			<p class="p_block"><var>真实姓名：</var>{$U->realname}</p>
+			<p class="p_block"><var>Email：</var>{$U->email} <a href="{$url}?mod=member&act=emailchange">修改邮箱</a></p>
+			<p class="p_block"><var>团队名称：</var><input type="text" name="nickname" value="{$U->nickname}"/></p>
+			<p class="p_block"><var>英文名：</var><input type="text" name="enname" value="{$U->enname}"/></p>
+			<div class="address"><var>住址：</var>
+				<select name="provid" id="provid"></select>
+				<select name="cityid" id="cityid"></select>
+				<select name="townid" id="townid"></select>
+				<input type="text" name="address" value="{$U->address}"/>
+			</div>
+			<p><var>手机：</var><input type="text" name="mobile" value="{$U->mobile}"/></p>
+			<p><var>座机：</var><input type="text" name="tel" value="{$U->telephone}"/></p>
+			<p><var>网址：</var><input type="text" name="website" value="{$U->website}"/></p>
+			<p><var>传真：</var><input type="text" name="fax" value="{$U->fax}"/></p>
+			<p><var>QQ：</var><input type="text" name="qq" value="{$U->qq}"/></p>
+			<p><var>MSN：</var><input type="text" name="msn" value="{$U->msn}"/></p>
+		</div>
+		<div class="tj">
+			<button type="submit">提交</button>
+			<button type="reset">重置</button>
+		</div>
+		</form>
+	</div>
+</div>
+{else if $action=='upgrade'}
+
+dddddd
+{else if $action=='main'}
+
+
+{else if $action=="index"}
+
+			<div class="my_app">
+				<h2>上传作品</h2>
+			</div>
+			
+			<div class="produce messages">
+				<div class="person_ct clearfix">
+					<div class="devapp">
+						<p><var>应用名称：</var> <input type="text" value=""/></p>
+						<div class="file-box">
+						<var>应用图标：</var>
+						 <input type='text' name='textfield1' id='textfield1' class='txt' />  
+						 <input type='button' class='btn' value='浏览' />
+							<input type="file" name="fileField1" class="file" id="fileField1" size="28" onchange="document.getElementById('textfield1').value=this.value" />
+						 <input type="submit" name="submit" class="btn" value="上传" />
+						</div>
+						<div class="small_ps">
+							<var>应用截图：</var>
+							<div class="file-box">
+							 <input type='text' name='textfield2' id='textfield2' class='txt' />  
+							 <input type='button' class='btn' value='浏览' />
+								<input type="file" name="fileField1" class="file" id="fileField2" size="28" onchange="document.getElementById('textfield2').value=this.value" />
+							 <input type="submit" name="submit" class="btn" value="上传" />
+							</div>
+						</div>
+						<div class="sfz">
+							<var>应用上传：</var>
+							<div class="type-file-box"> 
+							<input name="fileField" type="file" class="type-file-file" id="fileField" size="28" /> 
+							</div> 
+							<input type="button" value="上传" class="upline"/>
+						</div>
+						<div class="person_sm">
+							<var>应用介绍：</var>
+							<textarea></textarea>
+						</div>
+						<div class="person_sm">
+							<var>交互方式：</var>
+							<textarea></textarea>
+						</div>
+						<div class="address">
+							<var>单机/在线：</var>
+							<select>
+								<option>北京</option>
+								<option></option>
+							</select>
+						</div>
+						<div class="address">
+							<var>应用类型：</var>
+							<select>
+								<option>北京</option>
+								<option></option>
+							</select>
+						</div>
+						<p><var>建议价格：</var><input type="text" value=""/></p>
+						<div class="pt">
+							<var>支持平台：</var>
+							<div class="pt_ct">
+								<h2>tcl</h2>
+								<label><input type="checkbox"/>HS系列</label>
+								<label><input type="checkbox"/>MS99系列</label>
+								<label><input type="checkbox"/>MTK5326系列</label>
+								<label><input type="checkbox"/>MS801系列</label>
+								<label><input type="checkbox"/>极简电视系列</label>
+								<h2>长虹</h2>
+								<label><input type="checkbox"/>HS系列</label>
+								<label><input type="checkbox"/>MTK系列</label>
+							</div>
+						</div>
+						<div class="tj">
+							<a href="#">提交审核</a>
+							<a href="#">取消</a>
+						</div>
+					</div>
+				</div>
+			</div>
+		
+
+{/if}
+		</div>
+	</div>
+</div>
+{include file="../footer.htm"}

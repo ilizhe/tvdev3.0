@@ -1,0 +1,19 @@
+#将 RewriteEngine 模式打开
+RewriteEngine On
+
+RewriteBase /
+
+# Rewrite 系统规则请勿修改
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^detail-(.+)\.html$ index.php?mod=app&act=detail&appid=$1
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^friendlink\.html$ index.php?mod=help&act=about&type=links
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^about-(.+)\.html$ index.php?mod=help&act=about&id=$1
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^salon-(.+)\.html$ index.php?mod=salon&page=$1
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^app-(.+)-(.+)-(.+)\.html$ index.php?mod=app&classid=$1&order=$2&page=$3
+RewriteCond %{QUERY_STRING} ^(.*)$
+RewriteRule ^(.+)\.html$ index.php?mod=$1
+

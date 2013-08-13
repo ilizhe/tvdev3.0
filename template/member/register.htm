@@ -1,0 +1,299 @@
+{include file="../header.htm"}
+{if $action == "lostpass"}
+	<div>
+		{if $a == 'a'}
+	<div class="ctt">
+		<div class="tit f_c"><h3>找回密码</h3></div>
+		<div class="box_reg">
+			<p class="tips c_red">{$U->username}（{$U->email}）将会收到一封邮件，点击邮件中的链接，即可执行重置密码的操作啦</p>
+			{if $mailserver != ""}<a href="http://{$mailserver}" target="_blank" class="go">立即登录邮箱</a>{/if}
+		</div>				
+	</div>
+{else}
+
+		<div class="tit f_c">
+			<h3>找回密码</h3>
+		</div>
+		<div class="box_reg">
+	<form method="POST" name="login" action="{$url}?mod=register&act=lostpass" onsubmit="return FRM.check(this);">
+		<input type="hidden" name="formhash" value="{$formhash}"/>
+				<p class="tips c_red">{$msg}<!--<span>*</span>系统已向您的注册邮箱发送密码重置邮件，请点击邮件中链接进行修改，密码重置链接有效期为24小时。--></p>
+				<ul class="list_login list_get">
+					<li>
+						<label for="username">用户名：</label><input type="text" name="muser" maxlength="16" regex="username" isw="2" msg="账号不规范" />
+					</li>
+					<li>
+						<label for="username">邮　箱：</label><input type="text" name="email" maxlength="60" isw="2" msg="邮件地址不符合规范" regex="email"/>
+					</li>
+
+					<li>
+						<label for="check">验证码：</label><input type="text" id="check" class="check" name="verifyimg" msg="请填写验证码" isw="1" value=""  maxlength="6"/><a href="#"  onclick="return FRM.vu('#verifyimg','verify.php?random=');"><img src="verify.php" id="verifyimg"/></a>
+						<a href="#" class="refresh" onclick="return FRM.vu('#verifyimg','verify.php?random=');">点击图片刷新</a>
+					</li>
+					<li class="box_btn"><label></label><input type="submit" value="提&nbsp;交" class="submit"/></li>
+				</ul>
+			</form>
+		</div>
+		{/if}
+	</div>
+{else if $action == 'checkverify'}
+	<div>
+		<div class="tit f_c">
+			<h3>重置密码</h3>
+		</div>
+		<div class="box_reg">
+	<form method="POST" name="login" action="{$url}?mod=register&act=checkverify" onsubmit="return LP.check(this);">
+		<input type="hidden" name="formhash" value="{$formhash}"/>
+		<input type="hidden" name="verify" value="{$verify}"/>
+				<p class="tips c_red"></p>
+				<ul class="list_login list_get">
+					<li>
+						<label for="username">新密码：</label><input type="password" name="passwd" maxlength="16" id="password" onblur="return LP.passwd(this);"/>
+					</li>
+					<li>
+						<label for="username">确认新密码：</label><input type="password" name="passcp" maxlength="16" onblur="return LP.passcp(this,'#password');"/>
+					</li>
+
+					<li class="box_btn"><label></label><input type="submit" value="提&nbsp;交" class="submit"/></li>
+				</ul>
+			</form>
+		</div>				
+	</div>
+	<script>
+	$(document).ready(function(){
+		$("#verifycode").focus();
+	});
+
+	</script>
+{else if $action == "resetpass"}
+	<div>
+		<div class="tit f_c">
+			<h3>重置密码</h3>
+		</div>
+		<div class="box_reg">
+	<form method="POST" name="login" action="{$url}?mod=register&act=resetpass" onsubmit="return LP.check(this);">
+		<input type="hidden" name="formhash" value="{$formhash}"/>
+				<p class="tips c_red"></p>
+				<ul class="list_login list_get">
+					<li>
+						<label for="username">验证码：</label><input type="text" id="verifycode" name="verifycode" maxlength="15"/>
+						<span id='bl_passwd' class="c_red">校验码已经发送到您提供的邮箱中，请登录邮箱查收</span><kbd id="xy_passwd" class="" fdt="password"></kbd>
+					</li>
+					<li>
+						<label for="username">新密码：</label><input type="password" name="passwd" maxlength="16" id="password" onblur="return LP.passwd(this);"/>
+					</li>
+					<li>
+						<label for="username">确认新密码：</label><input type="password" name="passcp" maxlength="16" onblur="return LP.passcp(this,'#password');"/>
+					</li>
+
+					<li class="box_btn"><label></label><input type="submit" value="提&nbsp;交" class="submit"/></li>
+				</ul>
+			</form>
+		</div>				
+	</div>
+	<script>
+	$(document).ready(function(){
+		$("#verifycode").focus();
+	});
+
+	</script>
+{else if $action == "activecode"}
+<div class="ctt">
+	<h2 class="title">设置新密码</h2>
+	<div class="box_reg">
+		<form method="POST" action="{$url}?mod=register&act=activecode" onsubmit="return FRM.check(this);">
+		<input type="hidden" name="formhash" value="{$formhash}"/>
+			<p class="relogin"></p>
+			<ul class="list_login">
+				<li>
+					<label for="password">设置新密码：</label><input type="password" id="password" name="passwd" isw="2" msg="请输入密码" regex="password" maxlength="16"/>							
+				</li>
+				<li>
+					<label for="passwordagain">再次输入密码：</label><input type="password" id="passwordagain" name="passwdcp" isw="2" regex="password" msg="二次输入的密码不一致"  maxlength="16"/>
+				</li>
+				<li class="box_btn"><input type="submit" value="提&nbsp;交" class="submit"/></li>
+				<li class="errorinfo"><span class="c_red"></span></li>
+			</ul>
+		</form>
+	</div>
+</div>
+
+{else if $action == "updatepass"}
+
+		<div class="ctt">
+			<h2 class="title">设置新密码</h2>
+			<div class="box_reg">
+			<form method="POST" name="login" action="{$url}?mod=register&act=updatepass" onsubmit="return FRM.check(this);">
+				<input type="hidden" name="formhash" value="{$formhash}"/>
+					<p class="relogin"></p>
+					<ul class="list_login">
+						<li>
+							<label for="password">密码：</label><input type="password" id="password" name="passwd" isw="2" msg="请输入密码" regex="password" maxlength="16"/>							
+						</li>
+						<li>
+							<label for="passwordagain">再次输入密码：</label><input type="password" id="passwordagain" name="passwdcp" isw="2" regex="password" msg="二次输入的密码不一致"  maxlength="16"/>						
+						</li>
+						<li>
+							<label for="check">验证码：</label><input type="text" id="check" class="check" name="verifyimg" msg="请填写验证码" isw="1" value="" maxlength="6"/><img src="verify.php" id="verifyimg"/>
+							
+						</li>
+						<li class="lrows lexp"><span class="c_red"></span><a href="#" class="refresh" onclick="return FRM.vu('#verifyimg','verify.php?random=');">点击图片刷新</a></li>
+						<li class="box_btn"><input type="submit" value="提&nbsp;交" class="submit"/></li>
+						<li class="errorinfo"><span class="c_red"></span></li>
+					</ul>
+				</form>
+			</div>			
+		</div>
+{else if $action=='resend'}
+	<div class="ctt">
+		<div class="tit f_c"><h3>邮箱激活</h3></div>
+		<div class="box_reg">
+			<p class="tips c_red">{$U->username}（{$U->email}）将会收到一封邮件，点击邮件中的链接，即可执行激活操作啦</p>
+			{if $mailserver != ""}<a href="http://{$mailserver}" target="_blank" class="go">立即登录邮箱</a>{/if}
+			<p class="littip">如果没找到激活邮件可以到垃圾邮件中找找或者<a href="#" onclick="window.location.reload();return false;">重新发送激活邮件</a> 返回<a href="{$loginurl}">登录</a></p>
+		</div>				
+	</div>
+
+{else}
+	{if $regsuccess=='1'}
+	<div class="ctt">
+		<div class="tit f_c"><h3>邮箱激活</h3></div>
+		<div class="box_reg">
+			<p class="tips c_red">{$U->devname}（{$U->email}）将会收到一封邮件，点击邮件中的链接，即可执行激活操作啦</p>
+			{if $mailserver != ""}<a href="http://{$mailserver}" target="_blank" class="go">立即登录邮箱</a>{/if}
+			<p class="littip">如果没找到激活邮件可以到垃圾邮件中找找或者<a href="{$resendurl}">重新发送激活邮件</a> 返回<a href="{$loginurl}">登录</a></p>
+		</div>				
+	</div>
+
+	{else}
+<script>
+$(document).ready(function(){
+	PCT.init("#provid","#cityid","#townid");
+	$("#provid").change(PCT.provc);
+	$("#cityid").change(PCT.cityc);
+	REG.init('registerformid','username');
+});
+
+</script>
+		<div>
+				<div class="tit f_c">
+					<h3>用户注册</h3>
+				</div>
+			<script >
+			var frmsub=true;
+			function usernameck(obj,ret){
+				if( ret == "0" ){
+					$("#"+obj).html("");
+					$("#"+obj).hide();
+					frmsub=true;
+				}else{
+					$("#"+obj).html(ret);
+					$("#"+obj).show();
+					frmsub=false;
+				}
+				xyrw("xy_devname",ret);
+			}
+			function passwdcpck(obj,bl,xy){
+				var o = $(obj);
+				var ret = "";
+				var pid = o.attr("pid");
+				if( obj.value=="" && obj.value==$("#"+pid).attr("value")  ) return ;
+				if( !pn_password.exec(o.attr("value")) ){
+					ret = o.attr("msg");
+				}else{
+					if( $("#"+pid).attr("value") != obj.value )
+						ret = o.attr("msg");
+				}
+				$("#"+bl).html(ret);
+				if(ret)
+					$("#"+bl).hide();
+				else
+					$("#"+bl).show();
+				xyrw(xy,ret);
+			}
+			function passwdck(obj,bl,xy){
+				var o = $(obj);
+				var ret = "";
+				if( !pn_password.exec(o.attr("value")) ){
+					ret = o.attr("msg");
+				}
+				$("#"+bl).html(ret);
+				if(ret)
+					$("#"+bl).hide();
+				else
+					$("#"+bl).show();
+				xyrw(xy,ret);
+			}
+			function emailck(obj,ret){
+				if( ret == "0" ){
+					$("#"+obj).html("");
+					$("#"+obj).hide();
+					frmsub=true;
+				}else{
+					frmsub=false;
+					$("#"+obj).html(ret);
+					$("#"+obj).show();
+				}
+				xyrw("xy_email",ret);
+			}
+			function verck(obj,ret){
+				if( ret == "0" ){
+					$("#"+obj).html("");
+					$("#"+obj).hide();
+					frmsub=true;
+				}else{
+					frmsub=false;
+					$("#"+obj).html(ret);
+					$("#"+obj).show();
+				}
+			}
+			function xyrw(obj,ret){
+				$("#"+obj).removeClass("no");
+				$("#"+obj).removeClass("ok");
+				if( ret=="0" || ret == "" ){
+					$("#"+obj).addClass("ok");
+				}else{
+					$("#"+obj).addClass("no");
+				}
+			}
+			</script>
+				<div class="box_reg">
+				<form method="POST" action="{$url}?mod=register&act=reg" id="registerformid" onsubmit="return (REG.check(this)&& frmsub);">
+					<ul class="list_login">
+						<li>
+							<label for="username"><span>*</span>用户名：</label><input type="text" msg="账号不合规范" isw="2" regex="username" id="username" name="devname" value="" url="{$url}?mod=register&act=testing&type=1&value=" onblur="return REG.checkusername(this,'#bl_devname','#xy_devname');" maxlength="15"/><span class="c_red" id="bl_devname" style='display:none;'></span>
+							<span class="exp">字母、数字或中文，最短3个字符</span>
+							<kbd class="" id="xy_devname" fdt="username"></kbd>
+						</li>
+						<li>
+							<label for="password"><span>*</span>密码：</label><input type="password" name="password" id="password" isw="2" msg="密码不合规范" value="" regex="password" onblur="REG.passwdck(this,'#bl_passwd','#xy_passwd');" maxlength="16"/><span id='bl_passwd' class="c_red"  style='display:none;'></span>
+							<kbd id="xy_passwd" class="" fdt="password"></kbd>
+							<span class="exp">1-16字符</span>
+						</li>
+						<li>
+							<label for="passwordagain"><span>*</span>再次输入密码：</label><input type="password" id="passwordagain" name="passwdcp" isw="1" msg="二次输入的密码不一致" pid="password" value="" onblur="REG.passcpck(this,'#bl_passwdcp','#xy_passwdcp','#password')" maxlength="16"/><span id='bl_passwdcp' class="c_red"  style='display:none;'></span>
+							<kbd id="xy_passwdcp" class="" fdt="passwordagain"></kbd>
+						</li>
+						<li>
+							<label for="email"><span>*</span>邮箱地址：</label><input type="text" id="email" name="email" isw="2" msg="邮件地址不符合规范" regex="email" value="" url="{$url}?mod=register&act=testing&type=3&value=" onblur="return REG.emailck(this,'#bl_email','#xy_email');"/>
+							<span class="exp">Email是您登陆社区的重要凭证。请尽量使用您的企业邮箱或软件内的技术支持邮箱，以便我们核实开发者身份。</span>
+							<span id='bl_email' class="c_red"  style='display:none;'></span>
+							<kbd id="xy_email" class="" fdt="email"></kbd>
+						</li>
+						<li class="bcheck">
+							<label for="check"><span>*</span>验证码：</label><input type="text" id="check" class="check" name="verifyimg" msg="请填写验证码" isw="2" regex="verify" value="" url="{$url}?mod=register&act=testing&type=4&value=" onblur="return REG.verify(this,'#bl_verify','#xy_verify')" maxlength="6"/><a href="#" onclick="return FRM.vu('#verifyimg','verify.php?random=');"><img src="verify.php" id="verifyimg"/></a>
+							<span id="bl_verify" class="c_red"  style='display:none;'></span>
+							<kbd class="" id="xy_verify" fdt="check"></kbd>
+							<a href="#" class="refresh" onclick="return FRM.vu('#verifyimg','verify.php?random=');">点击图片刷新</a>
+						</li>
+						<li class="box_btn"><label></label><input type="submit" value="注&nbsp;册" class="register"/></li>
+					</ul>
+				</form>
+			</div>				
+		</div>
+	</div>
+	{/if}
+{/if}
+
+{include file="../footer.htm"}
+

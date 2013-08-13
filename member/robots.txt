@@ -1,0 +1,6 @@
+#
+# robots.txt for member
+#
+
+User-agent: * 
+Disallow: / 

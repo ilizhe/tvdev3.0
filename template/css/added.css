@@ -1,0 +1,154 @@
+.list_login .c_red{color:#f00;font-size:12px;left: 380px;line-height: 24px;padding-left: 20px;position: absolute;top: 0;width: 430px;background:url(../img/login.png) no-repeat scroll -226px -19px transparent;}
+.ok, .no{background: url("../images/login.png") no-repeat scroll 0 0 transparent;height: 10px;left: 340px;position: absolute;top: 11px;width: 13px;}
+.ok {background-position: 0 -102px;}
+.no {background-position: 0 -49px;}
+.regsub .c_blue{font-size:12px;}
+.list_login li.alert{color:#f00;margin-left:120px;}
+.c_red{color:#f00;}
+/************/
+.box_edit a{color: #00a0e9;text-decoration: underline;}
+.box_edit a.apply { color:#fff; text-decoration:none; background-image:url(../images/btn_orange.png);}
+.bp{overflow: hidden;zoom:1;background: #F7F9FA;padding: 20px 10px;min-height: 600px;_height: 600px;}
+.bp a{text-decoration: none;display: block;background: url(../images/login.png) no-repeat -288px -44px;color: #FFFFFF;cursor: pointer;font-size: 14px; height: 30px;line-height: 30px;text-align: center;width: 100px;margin: 0 auto 10px;}
+.bp dl{width: 45%;}
+/*********upload***********/
+.box_edit .c_red{color:#f00;}
+.tit_edit{background: url(../images/titedit.jpg) no-repeat 0 0;height: 50px;line-height: 50px;width: 180px;text-align: center;font-size: 16px;color: #fff;}
+.box_edit{padding: 20px 10px;background: #f7f9fa;margin-bottom: 20px;}
+.box_edit li{margin-bottom: 20px;zoom:1;}
+.box_edit li:after{content:'';clear:both;display:block;height:0;}
+.box_edit span{margin-right: 3px;}
+.box_edit textarea{height: 50px;width: 460px;}
+.box_edit label{float: left;width: 130px;text-align: right;color: #00a0e9;font-size: 14px;font-weight: 600;}
+.configlist { padding-top:10px; border-bottom:1px solid #fff;}
+.configlist li { margin:0; padding:10px; border:1px solid #fff; border-bottom:none;}
+.configlist li a { margin-left:20px;}
+.b_btn .unavailable{background: url(../image/login.png) no-repeat -72px -82px;width: 100px;height: 30px;line-height: 30px;text-align: center;padding: 0;border: 0;color: #fff;font-size: 14px;}
+.b_btn .btn{cursor: pointer;background: url(../image/login.png) no-repeat -288px -44px;width: 100px;height: 30px;line-height: 30px;text-align: center;padding: 0;border: 0;color: #fff;font-size: 14px;}
+.boxname input{width: 300px;padding: 2px;height: 24px;}
+.choice{position: absolute;left: 110px;top: 30px;width: 304px;border:1px solid #aaa;height: 240px;overflow-y: scroll;background-color: #fff;z-index: 2;display: none;}
+.choice li{height: 24px;line-height: 24px;margin: 0;padding: 0 10px;white-space: nowrap;overflow: hidden;cursor: pointer;}
+.choice li:hover{color: #fff;background-color: #aaa;}
+.boxname{position: relative;}
+.permission{margin-right: 20px;}
+.s_ico,.b_ico{float: left;}
+.s_ico input,.b_ico input{margin-bottom: 10px;}
+.s_ico img{width: 65px;height: 65px;}
+.b_ico img{width: 100px;height: 100px;}
+.s_ico img,.b_ico img{display: none;}
+.s_ico div,.b_ico div{float: left;height: auto;width: 200px;}
+.b_img {clear: left;}
+.b_img ul{margin-top: 15px;}
+.b_img li{display: inline-block;*display: inline;zoom:1;height: 132px;width: 172px;margin: 0 20px 20px 0;position: relative;}
+.b_img li img{height: 130px;width: 170px;border: 1px solid #c6c6c6;}
+.b_img li .close{position: absolute;height: 24px;width: 24px;background: url(../images/close.gif) no-repeat 0 0;display: none;right: 10px;bottom: 10px;}
+.b_img li:hover .close{display: block;}
+.platform{float: left;background-color: #fff;border: 1px solid #c6c6c6;width: 496px;height: 130px;padding: 10px 15px;}
+.platform h3{font-weight: 600;margin-bottom: 10px;}
+.platform label{float: none;color: #000;font-weight: normal;}
+.platform li{display: inline-block;*display: inline;zoom:1;margin-bottom: 10px;margin-right: 7px;}
+.platform ul{border-bottom: 1px dotted #c6c6c6;}
+.platform ul.last{border-bottom: 0;}
+.box_edit .tpy{display: inline-block;*display: inline;zoom:1;white-space: nowrap;}
+.tpy select{width: 200px;float: left;}
+.box_edit .text{width: 250px;}
+.addr select{width: 100px;}
+.price input{width: 200px;}
+.b_btn{text-align: center;}
+.b_btn input{margin-left: 30px;}
+.go{display: block;height: 30px;line-height: 30px;width: 100px;text-align: center;color: #fff;margin: 0 auto 30px;background: url(../images/login.png) no-repeat -179px -45px;}
+.go:hover{text-decoration: none;}
+.littip{text-align: center;}
+.littip a{margin: 0 5px;text-decoration: underline;color: #0653bd;}
+.box_tips{width: 500px;height: 250px;margin: 0 auto;text-align: center;box-shadow: 0 0 16px rgba(0, 0, 0, 0.3);padding:60px 30px 0;border-radius:10px;border: 10px solid #2abbf5;background-color: #fff;margin-bottom:30px;}
+.box_tips h2{background:url(../images/info.png) no-repeat 130px center;height: 60px;line-height: 60px;font-size: 24px;margin-bottom: 50px;text-align: center;}
+.box_tips p{font-size: 16px;}
+.box_tips a{margin: 0 3px;color: #0653bd;}
+.tips{text-align:center;line-height:30px;}
+.b_del{margin-bottom: 10px;}
+.appname{display: block;width: 120px;overflow: hidden;height: 20px;line-height: 20px;margin: 0 auto;}
+.tb_app{text-align: center;}
+.tb_app p{width: 120px;overflow: hidden;line-height: 20px;margin: 0 auto;}
+.tb_app a{color: #0653bd;}
+.cover{height: 100%;width: 100%;filter:progid:DXImageTransform.Microsoft.gradient(enabled='true',startColorstr='#66000000', endColorstr='#66000000');background:rgba(0,0,0,0.4);position: fixed;left: 0;top:0;}
+.cover h2{font-size: 14px;color: #fc4606;border-bottom: 1px solid #c4c5a6;background: url(../image/h2bg.png) repeat-x 0 0;height: 40px;line-height:40px;padding-left: 15px;margin-bottom: 20px;}
+.cover section{background: #eee;border: 4px solid #2abbf5;border-radius: 10px;width: 590px;height: 300px;margin: 300px auto;overflow: hidden;}
+.cover textarea{width: 500px;height: 150px;margin: 0 auto 10px;}
+.b_alert{width: 500px;margin: 0 auto;}
+.b_alert .b_btn{padding-left: 0;text-align: right;}
+.apply{display: block;height: 40px;line-height: 40px;margin: 0 auto 10px;width: 210px;background: url(../image/appkey.png) no-repeat 0 0;color: #fff;text-align: center;font-size: 16px;}
+.apply:hover{text-decoration: none;}
+.box_app{width: 600px;margin: 0 auto;background-color: #f8fafa;padding: 20px;}
+.box_app p{text-indent: 2em;line-height: 24px;margin-bottom: 15px;}
+.box_key{width: 700px;margin: 0 auto;}
+.box_key form{margin-bottom: 10px;}
+.box_key label{font-size: 14px;}
+.box_key .aname{height: 26px;line-height: 30px;padding: 1px 5px;width: 300px;margin-right: 10px;}
+.box_key .btn{ background: url(../images/login.png) no-repeat -288px -44px;border: 0 none;color: #FFFFFF;font-size: 14px;height: 30px;line-height: 30px;padding: 0;text-align: center;width: 100px;cursor: pointer;}
+.box_key td{padding: 5px;}
+.b_inline{width: 340px;display: inline-block;*display: inline;zoom:1;}
+.b_fax{margin-left: 344px;}
+.b_idimg{position: relative;}
+.b_idimg img{position: absolute;right: 40px;top: -50px;width: 100px;height: 90px;}
+.box_edit section{padding: 20px 0;margin-bottom: 20px;}
+.box_edit section h3{padding-left: 30px;margin-bottom: 30px;font-size: 16px;font-weight: 600;}
+.addr input{width: 180px;}
+.serviceItem{width: 600px;margin:  0 auto;}
+.serviceItem label{float: none;color: #000;font-size: 12px;font-weight: normal;}
+.serviceItem textarea{resize: none;background-color: #FFFFFF;border: 1px solid #C6C6C6;height: 130px;padding: 10px 15px;width: 100%;overflow-y: scroll;margin-bottom: 5px;}
+.b_service{overflow: hidden;zoom:1;}
+.gray{color: #ccc;}
+.box_app li{margin-bottom: 30px;position: relative;}
+.box_app li.last{margin-bottom: 0;}
+.box_app label{width: 190px;}
+.box_app .exp{left: 190px;}
+.box_app .submit{ background: url(../image/appkey.png) no-repeat 0 0;color: #FFFFFF;display: block;font-size: 16px;height: 40px;line-height: 40px;margin: 0 auto;text-align: center;width: 210px;border: 0 none;cursor: pointer;}
+.notice p{margin-bottom: 10px;text-indent: 2em;}
+.notice{background-color:  #F7F9FA;padding: 20px;min-height: 600px;}
+.boxpic{text-align: center;margin-bottom: 10px;}
+#zhezhao{
+	display: none;
+    position: fixed;
+    top: 0%;
+    left: 0%;
+    width: 100%;
+    height: 100%;
+    background-color: #8FB0D1;
+    z-index:1001;
+    -moz-opacity: 0.8;
+    opacity:.80;
+    filter: alpha(opacity=80);
+  }
+
+#image-appicon{height:50px;width:50px;display:block;}
+#image-appicon img{height:50px;width:50px;}
+#image-spreadicon{height:100px;width:100px;display:block;}
+#image-spreadicon img{height:100px;width:100px;}
+.s_img div,.b_img div{overflow:hidden;zoom:1;}
+.appimglist .appimgitem {width:88px;height:153px;margin:0 18px 20px 0;float:left;position:relative;}
+.appimglist .appimgitem .apppic img{width:80px;height:120px;padding:3px;border:1px solid #dcdcdc;}
+.appimglist .appimgitem .apppic{width:88px;height:128px;display:block;}
+.appimglist .appimgitem .delpic {position:absolute;bottom:0;right:0;}
+.s_img div p,.b_img div p{color:#888888;clear:both;}
+.tb{width:100%;}
+.bl .box_edit .tb{text-align:center;width:550px;margin-left:130px;}
+.bl .tb{margin-bottom: 20px;}
+.upload_button { width:100px; height:25px; background-color:#CEE7FF; text-align:center; line-height:25px; cursor:pointer;border-radius:4px;text-decoration:none !important;float:left;}
+
+.bcheck .ok,.bcheck .no{left:220px;}
+
+input:focus { border: 1px dotted black; }
+.hr input:focus{border: 0 none;}
+input.error { border: 1px dotted red; }
+form.cmxform label.error, label.error {
+	/* remove the next line when you have trouble in IE6 with labels in list */
+	color: red;
+	font-style: normal;
+	float: none;
+	display: block;
+	padding-top:3px;
+	margin-left: 120px;
+}
+
+.fsuploadbutton {background-color: #ddd; padding: 2px;width: 50px;height: 22px;}
+.upbtn{margin-left:25px;}

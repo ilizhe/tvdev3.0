@@ -1,0 +1,166 @@
+{include file="../header.htm"}
+{if $action == 'index'}
+			<div class="bfocus f_c">
+				<div id="focus" class="f680">
+					<ul>
+						{foreach from=$banner item=row}
+							{if $row->linkurl==''}
+							<li><img src="{$bbsurl}/{$row->pic}" alt="{$row->title}" /></li>
+							{else}
+							<li><a href="{$row->linkurl}"><img src="{$bbsurl}/{$row->pic}" alt="{$row->title}" /></a></li>
+							{/if}
+						{/foreach}
+					</ul>
+				</div>
+				<section class="br f_r">
+					<div class="tit f_c">
+						<h3>热门专题</h3>						
+					</div>
+					<ul class="topic">
+						{foreach from=$smarttvlist item=row}
+							<li>
+							<a href="{$siteurl}/app-{$row->classid}-N-1.html" class="thimg"><img src="{$row->icon}" width="125" height="50" /></a>
+							<div>
+							<h4><a href="{$siteurl}/app-{$row->classid}-N-1.html">{$row->title}</a></h4>
+							<p>{$row->desci}</p>
+							</div>
+							</li>
+						{/foreach}
+					</ul>
+				</section>
+			</div>
+			<div class="box f_c">
+				<div class="bl f_l">
+					<div class="spe">
+						<div class="tit f_c">
+							<h3>TV精品应用推荐</h3>
+							<a href="{$siteurl}/app.html" class="more">More>></a>
+						</div>
+						<div id="TVRecommand">
+							<ul class="lapp">
+							{foreach from=$TV_GAME_SOFTWARE_RECOMMAND item=row name=app}
+								{if $smarty.foreach.app.index >5}
+									{break}
+								{else}
+								<li>
+									<a href="{$siteurl}/detail-{$row->appid}.html"><img src="{$row->icon}" /></a>
+									<a href="{$siteurl}/detail-{$row->appid}.html" class="aname" title="{$row->title}">{$row->title|truncate:6:""}</a>
+									<a href="{$siteurl}/detail-{$row->appid}.html">{$row->category}</a>
+								</li>	
+								{/if}
+							{/foreach}
+							</ul>
+							{if $appcount > 6}
+								<ul class="lapp">
+								{foreach from=$TV_GAME_SOFTWARE_RECOMMAND item=row name=app}
+									{if $smarty.foreach.app.index >11}
+										{break}
+									{else}
+										{if $smarty.foreach.app.index>5}
+										<li>
+											<a href="{$siteurl}/detail-{$row->appid}.html"><img src="{$row->icon}" /></a>
+											<a href="{$siteurl}/detail-{$row->appid}.html" class="aname" title="{$row->title}">{$row->title|truncate:6:""}</a>
+											<a href="{$siteurl}/detail-{$row->appid}.html">{$row->category}</a>
+										</li>
+										{/if}
+									{/if}
+								{/foreach}
+								</ul>
+							{/if}
+							{if $appcount > 12}
+								<ul class="lapp">
+								{foreach from=$TV_GAME_SOFTWARE_RECOMMAND item=row name=app}
+									{if $smarty.foreach.app.index >17}
+										{break}
+									{else}
+										{if $smarty.foreach.app.index>11}
+										<li>
+											<a href="{$siteurl}/detail-{$row->appid}.html"><img src="{$row->icon}" /></a>
+											<a href="{$siteurl}/detail-{$row->appid}.html" class="aname" title="{$row->title}">{$row->title|truncate:6:""}</a>
+											<a href="{$siteurl}/detail-{$row->appid}.html">{$row->category}</a>
+										</li>
+										{/if}
+									{/if}
+								{/foreach}
+								</ul>
+							{/if}
+						</div>
+					</div>
+					<div>
+						<div class="tit f_c">
+							<h3>TV资讯</h3>
+						</div>						
+						{foreach from=$zixun item=row}
+							<div class="hotnews">
+								<a href="{$bbsurl}/article-{$row->tid}-1.html" target="_blank"><img src="{$bbsurl}/{$row->pic}"></a>
+								<h4>
+									<a href="{$bbsurl}/article-{$row->tid}-1.html" target="_blank">{$row->subject}</a>
+								</h4>
+								<p><a href="{$bbsurl}/article-{$row->tid}-1.html" target="_blank">{$row->description}</a></p>
+							</div>
+						{/foreach}
+						
+						<ul class="lnews">
+							<script type="text/javascript" src="{$bbsurl}/api.php?mod=js&bid=18"></script>
+						</ul>
+					</div>
+					<div>
+						<div class="tit f_c">
+							<h3>论坛精华</h3>		
+						</div>
+						{foreach from=$jinghua item=row}
+							<div class="hotnews">
+								<a href="{$bbsurl}/thread-{$row->tid}-1-1.html" target="_blank"><img src="{$bbsurl}/{$row->pic}"></a>
+								<h4>
+									<a href="{$bbsurl}/thread-{$row->tid}-1-1.html" target="_blank">{$row->subject}</a>
+								</h4>
+								<p><a href="{$bbsurl}/thread-{$row->tid}-1-1.html" target="_blank">{$row->description}</a></p>
+							</div>
+						{/foreach}
+						<ul class="lnews">
+							<script type="text/javascript" src="{$bbsurl}/api.php?mod=js&bid=19"></script>
+						</ul>
+					</div>
+					
+				</div>				
+				<section class="br f_r">
+					<div class="tit">
+						<h3 class="tgame">热门游戏榜</h3>						
+					</div>
+					<ol class="rank" id="hotgame">
+						{foreach from=$TV_GAME_RANK item=row name=game}
+						<li>
+							<span>{$smarty.foreach.game.index+1}</span>
+							<img src="{$row->icon}"></img>
+							<a href="{$siteurl}/detail-{$row->appid}.html">{$row->title}</a>
+						</li>
+						{/foreach}
+					</ol>
+					<div class="tit">
+						<h3 class="tapp">热门应用榜</h3>						
+					</div>
+					<ol class="rank" id="hotapp">
+						{foreach from=$TV_SOFTWARE_RANK item=row name=soft}
+						<li>
+							<span>{$smarty.foreach.soft.index+1}</span>
+							<img src="{$row->icon}"></img>
+							<a href="{$siteurl}/detail-{$row->appid}.html">{$row->title}</a>
+						</li>
+						{/foreach}
+					</ol>
+				</section>
+			</div>
+			<div>
+				<div class="tit">
+					<h3>友情链接</h3>						
+				</div>
+				<div class="link">
+					{foreach from=$friendlinks item=row}
+						<a href="{$row->url}" title="{$row->name}">{$row->name}</a>
+					{/foreach}
+					<a href="{$siteurl}/friendlink.html" title="更多" class="more">更多>></a>					
+				</div>
+			</div>
+		</div>
+{/if}
+{include file="../footer.htm"}	

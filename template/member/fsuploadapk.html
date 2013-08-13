@@ -1,0 +1,452 @@
+<script type="text/javascript">
+	var appicon,spreadicon,pic1,pic2,pic3,pic4,pic5,apk;
+	window.onload = function() {
+		appicon = new SWFUpload({
+			flash_url : "{$objdir}/js/swfupload.swf",
+			upload_url: "{$remoteuploadurl}",	// Relative to the SWF file
+			post_params: { "PHPSESSID" : "{$SESSIONID}",'type':'logo','appkey':"{$appkey}"},
+			file_size_limit : "{$fsize} MB",
+
+			file_types : "{$filetype}",
+			file_types_description : "{$filedesc}",
+			file_upload_limit : 0,
+			file_queue_limit : 0,
+			custom_settings : {
+				file_type:'pic',
+				file_input_name:'appicon',
+				file_thumb_id: 'image-appicon',
+				progressTarget : "fsUploadProgress_appicon"
+			},
+			debug: false,
+
+			// Button settings
+			button_image_url: "{$objdir}/image/SmallSpyGlassWithTransperancy_17x18.png",	// Relative to the Flash file
+			button_width: "50",
+			button_height: "18",
+			button_placeholder_id: "spanButtonPlaceholder_appicon",
+			button_text: '<span class="button">上传</span>',
+			button_text_style: ".button { font-family: Helvetica, Arial, sans-serif; font-size: 12pt;} ",
+			button_text_left_padding: 18,
+			button_text_top_padding: 0,
+			button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+			button_cursor: SWFUpload.CURSOR.HAND,
+			
+			// The event handler functions are defined in handlers.js
+			file_dialog_start_handler : fileDialogStart,
+			file_queued_handler : fileQueued,
+			file_queue_error_handler : fileQueueError,
+			file_dialog_complete_handler : fileDialogComplete,
+			upload_start_handler : uploadStart,
+			upload_progress_handler : uploadProgress,
+			upload_error_handler : uploadError,
+			upload_success_handler : uploadSuccess,
+			upload_complete_handler : uploadComplete
+		});	
+		
+		spreadicon = new SWFUpload({
+			flash_url : "{$objdir}/js/swfupload.swf",
+			upload_url: "{$remoteuploadurl}",	// Relative to the SWF file
+			post_params: { "PHPSESSID" : "{$SESSIONID}",'type':'logo','appkey':"{$appkey}"},
+			file_size_limit : "{$fsize} MB",
+
+			file_types : "{$filetype}",
+			file_types_description : "{$filedesc}",
+			file_upload_limit : 0,
+			file_queue_limit : 0,
+			custom_settings : {
+				file_type:'pic',
+				file_input_name:'spreadicon',
+				file_thumb_id: 'image-spreadicon',
+				progressTarget : "fsUploadProgress_spreadicon"
+			},
+			debug: false,
+
+			// Button settings
+			button_image_url: "{$objdir}/image/SmallSpyGlassWithTransperancy_17x18.png",	// Relative to the Flash file
+			button_width: "50",
+			button_height: "18",
+			button_placeholder_id: "spanButtonPlaceholder_spreadicon",
+			button_text: '<span class="button">上传</span>',
+			button_text_style: ".button { font-family: Helvetica, Arial, sans-serif; font-size: 12pt; } ",
+			button_text_left_padding: 18,
+			button_text_top_padding: 0,
+			button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+			button_cursor: SWFUpload.CURSOR.HAND,
+			
+			// The event handler functions are defined in handlers.js
+			file_dialog_start_handler : fileDialogStart,
+			file_queued_handler : fileQueued,
+			file_queue_error_handler : fileQueueError,
+			file_dialog_complete_handler : fileDialogComplete,
+			upload_start_handler : uploadStart,
+			upload_progress_handler : uploadProgress,
+			upload_error_handler : uploadError,
+			upload_success_handler : uploadSuccess,
+			upload_complete_handler : uploadComplete
+		});	
+		
+		pic1 = new SWFUpload({
+			flash_url : "{$objdir}/js/swfupload.swf",
+			upload_url: "{$remoteuploadurl}",	// Relative to the SWF file
+			post_params: { "PHPSESSID" : "{$SESSIONID}",'type':'1','appkey':"{$appkey}"},
+			file_size_limit : "{$fsize} MB",
+
+			file_types : "{$filetype}",
+			file_types_description : "{$filedesc}",
+			file_upload_limit : 0,
+			file_queue_limit : 0,
+			custom_settings : {
+				file_type:'pic',
+				file_input_name:'inputpic1',
+				file_thumb_id: 'pic1',
+				progressTarget : "fsUploadProgress_pic"
+			},
+			debug: false,
+
+			// Button settings
+			button_image_url: "{$objdir}/image/SmallSpyGlassWithTransperancy_17x18.png",	// Relative to the Flash file
+			button_width: "50",
+			button_height: "18",
+			button_placeholder_id: "spanButtonPlaceholder_pic1",
+			button_text: '<span class="button">上传</span>',
+			button_text_style: ".button { font-family: Helvetica, Arial, sans-serif; font-size: 12pt; } ",
+			button_text_left_padding: 18,
+			button_text_top_padding: 0,
+			button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+			button_cursor: SWFUpload.CURSOR.HAND,
+			
+			// The event handler functions are defined in handlers.js
+			file_dialog_start_handler : fileDialogStart,
+			file_queued_handler : fileQueued,
+			file_queue_error_handler : fileQueueError,
+			file_dialog_complete_handler : fileDialogComplete,
+			upload_start_handler : uploadStart,
+			upload_progress_handler : uploadProgress,
+			upload_error_handler : uploadError,
+			upload_success_handler : uploadSuccess,
+			upload_complete_handler : uploadComplete
+		});
+		pic2 = new SWFUpload({
+			flash_url : "{$objdir}/js/swfupload.swf",
+			upload_url: "{$remoteuploadurl}",	// Relative to the SWF file
+			post_params: { "PHPSESSID" : "{$SESSIONID}",'type':'2','appkey':"{$appkey}"},
+			file_size_limit : "{$fsize} MB",
+
+			file_types : "{$filetype}",
+			file_types_description : "{$filedesc}",
+			file_upload_limit : 0,
+			file_queue_limit : 0,
+			custom_settings : {
+				file_type:'pic',
+				file_input_name:'inputpic2',
+				file_thumb_id: 'pic2',
+				progressTarget : "fsUploadProgress_pic"
+			},
+			debug: false,
+
+			// Button settings
+			button_image_url: "{$objdir}/image/SmallSpyGlassWithTransperancy_17x18.png",	// Relative to the Flash file
+			button_width: "50",
+			button_height: "18",
+			button_placeholder_id: "spanButtonPlaceholder_pic2",
+			button_text: '<span class="button">上传</span>',
+			button_text_style: ".button { font-family: Helvetica, Arial, sans-serif; font-size: 12pt; } ",
+			button_text_left_padding: 18,
+			button_text_top_padding: 0,
+			button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+			button_cursor: SWFUpload.CURSOR.HAND,
+			
+			// The event handler functions are defined in handlers.js
+			file_dialog_start_handler : fileDialogStart,
+			file_queued_handler : fileQueued,
+			file_queue_error_handler : fileQueueError,
+			file_dialog_complete_handler : fileDialogComplete,
+			upload_start_handler : uploadStart,
+			upload_progress_handler : uploadProgress,
+			upload_error_handler : uploadError,
+			upload_success_handler : uploadSuccess,
+			upload_complete_handler : uploadComplete
+		});		
+
+		pic3 = new SWFUpload({
+			flash_url : "{$objdir}/js/swfupload.swf",
+			upload_url: "{$remoteuploadurl}",	// Relative to the SWF file
+			post_params: { "PHPSESSID" : "{$SESSIONID}",'type':'3','appkey':"{$appkey}"},
+			file_size_limit : "{$fsize} MB",
+
+			file_types : "{$filetype}",
+			file_types_description : "{$filedesc}",
+			file_upload_limit : 0,
+			file_queue_limit : 0,
+			custom_settings : {
+				file_type:'pic',
+				file_input_name:'inputpic3',
+				file_thumb_id: 'pic3',
+				progressTarget : "fsUploadProgress_pic"
+			},
+			debug: false,
+
+			// Button settings
+			button_image_url: "{$objdir}/image/SmallSpyGlassWithTransperancy_17x18.png",	// Relative to the Flash file
+			button_width: "50",
+			button_height: "18",
+			button_placeholder_id: "spanButtonPlaceholder_pic3",
+			button_text: '<span class="button">上传</span>',
+			button_text_style: ".button { font-family: Helvetica, Arial, sans-serif; font-size: 12pt; } ",
+			button_text_left_padding: 18,
+			button_text_top_padding: 0,
+			button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+			button_cursor: SWFUpload.CURSOR.HAND,
+			
+			// The event handler functions are defined in handlers.js
+			file_dialog_start_handler : fileDialogStart,
+			file_queued_handler : fileQueued,
+			file_queue_error_handler : fileQueueError,
+			file_dialog_complete_handler : fileDialogComplete,
+			upload_start_handler : uploadStart,
+			upload_progress_handler : uploadProgress,
+			upload_error_handler : uploadError,
+			upload_success_handler : uploadSuccess,
+			upload_complete_handler : uploadComplete
+		});		
+
+		pic4 = new SWFUpload({
+			flash_url : "{$objdir}/js/swfupload.swf",
+			upload_url: "{$remoteuploadurl}",	// Relative to the SWF file
+			post_params: { "PHPSESSID" : "{$SESSIONID}",'type':'4','appkey':"{$appkey}"},
+			file_size_limit : "{$fsize} MB",
+
+			file_types : "{$filetype}",
+			file_types_description : "{$filedesc}",
+			file_upload_limit : 0,
+			file_queue_limit : 0,
+			custom_settings : {
+				file_type:'pic',
+				file_input_name:'inputpic4',
+				file_thumb_id: 'pic4',
+				progressTarget : "fsUploadProgress_pic"
+			},
+			debug: false,
+
+			// Button settings
+			button_image_url: "{$objdir}/image/SmallSpyGlassWithTransperancy_17x18.png",	// Relative to the Flash file
+			button_width: "50",
+			button_height: "18",
+			button_placeholder_id: "spanButtonPlaceholder_pic4",
+			button_text: '<span class="button">上传</span>',
+			button_text_style: ".button { font-family: Helvetica, Arial, sans-serif; font-size: 12pt; } ",
+			button_text_left_padding: 18,
+			button_text_top_padding: 0,
+			button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+			button_cursor: SWFUpload.CURSOR.HAND,
+			
+			// The event handler functions are defined in handlers.js
+			file_dialog_start_handler : fileDialogStart,
+			file_queued_handler : fileQueued,
+			file_queue_error_handler : fileQueueError,
+			file_dialog_complete_handler : fileDialogComplete,
+			upload_start_handler : uploadStart,
+			upload_progress_handler : uploadProgress,
+			upload_error_handler : uploadError,
+			upload_success_handler : uploadSuccess,
+			upload_complete_handler : uploadComplete
+		});		
+
+		pic5 = new SWFUpload({
+			flash_url : "{$objdir}/js/swfupload.swf",
+			upload_url: "{$remoteuploadurl}",	// Relative to the SWF file
+			post_params: { "PHPSESSID" : "{$SESSIONID}",'type':'5','appkey':"{$appkey}"},
+			file_size_limit : "{$fsize} MB",
+
+			file_types : "{$filetype}",
+			file_types_description : "{$filedesc}",
+			file_upload_limit : 0,
+			file_queue_limit : 0,
+			custom_settings : {
+				file_type:'pic',
+				file_input_name:'inputpic5',
+				file_thumb_id: 'pic5',
+				progressTarget : "fsUploadProgress_pic"
+			},
+			debug: false,
+
+			// Button settings
+			button_image_url: "{$objdir}/image/SmallSpyGlassWithTransperancy_17x18.png",	// Relative to the Flash file
+			button_width: "50",
+			button_height: "18",
+			button_placeholder_id: "spanButtonPlaceholder_pic5",
+			button_text: '<span class="button">上传</span>',
+			button_text_style: ".button { font-family: Helvetica, Arial, sans-serif; font-size: 12pt; } ",
+			button_text_left_padding: 18,
+			button_text_top_padding: 0,
+			button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+			button_cursor: SWFUpload.CURSOR.HAND,
+			
+			// The event handler functions are defined in handlers.js
+			file_dialog_start_handler : fileDialogStart,
+			file_queued_handler : fileQueued,
+			file_queue_error_handler : fileQueueError,
+			file_dialog_complete_handler : fileDialogComplete,
+			upload_start_handler : uploadStart,
+			upload_progress_handler : uploadProgress,
+			upload_error_handler : uploadError,
+			upload_success_handler : uploadSuccess,
+			upload_complete_handler : uploadComplete
+		});	
+		
+		apk = new SWFUpload({
+			flash_url : "{$objdir}/js/swfupload.swf",
+			upload_url: "{$remoteuploadurl}",	// Relative to the SWF file
+			post_params: { "PHPSESSID" : "{$SESSIONID}",'type':'app','appkey':"{$appkey}"},
+			file_size_limit : "{$fsize} MB",
+
+			file_types : "*.apk",
+			file_types_description : "{$filedesc}",
+			file_upload_limit : 0,
+			file_queue_limit : 0,
+			custom_settings : {
+				file_type:'app',
+				file_input_name:'apkfilename',
+				progressTarget : "fsUploadProgress_apk"
+			},
+			debug: false,
+
+			// Button settings
+			button_image_url: "{$objdir}/image/SmallSpyGlassWithTransperancy_17x18.png",	// Relative to the Flash file
+			button_width: "50",
+			button_height: "18",
+			button_placeholder_id: "spanButtonPlaceholder_apk",
+			button_text: '<span class="upload_button">上传</span>',
+			button_text_style: ".button { font-family: Helvetica, Arial, sans-serif; font-size: 12pt; } ",
+			button_text_left_padding: 18,
+			button_text_top_padding: 0,
+			button_window_mode: SWFUpload.WINDOW_MODE.TRANSPARENT,
+			button_cursor: SWFUpload.CURSOR.HAND,
+			
+			// The event handler functions are defined in handlers.js
+			file_dialog_start_handler : fileDialogStart,
+			file_queued_handler : fileQueued,
+			file_queue_error_handler : fileQueueError,
+			file_dialog_complete_handler : fileDialogComplete,
+			upload_start_handler : uploadStart,
+			upload_progress_handler : uploadProgress,
+			upload_error_handler : uploadError,
+			upload_success_handler : uploadSuccess,
+			upload_complete_handler : uploadComplete
+		});
+
+		$(".delpic",this).live("click",function(){
+			 $(this).prev().find('img').attr('src',"{$objdir}/images/no_img.gif")
+			 $(this).hide();
+			 var str=(this.id).replace(/del/i,"input");
+			 $("#"+str).attr("value",'del');
+		 });
+		 		
+     };
+
+	 function newapp(t){
+	var bool = FRM.check(t);
+	var _this=$("#newapp_form");
+	 if(bool){
+		 var flag=false;
+			for (var i=1;i<6;i++){
+				var value=$("input[name=apppic"+i+"]").val();
+				if(value !=''){
+					flag=true;
+				}	
+			}
+			if(!flag){
+				alert("应用截图不能为空");
+				return false;
+			}
+		 showLoading('提交中');
+		 $.ajax( {
+				global: false,
+				type: "post",
+				url: _this.attr( "action" ),
+				data: _this.serialize(),
+				context: _this,
+				success: function(data){
+			 		hideLoading();
+			 		if(data.error)
+				 		alert(data.error);
+			 		else
+				 		window.location.href=data.success;
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown){
+					hideLoading();
+					alert("网络繁忙，请稍后再试");
+				},
+				dataType: "json"
+			} );
+	 }
+	 return false;
+}
+
+//修改app
+function modifyapp(t){
+	var bool = FRM.check(t);
+	var _this=$("#modify_form");
+	 if(bool){
+		 showLoading('提交中');
+		 $.ajax( {
+				global: false,
+				type: "post",
+				url: _this.attr( "action" ),
+				data: _this.serialize(),
+				context: _this,
+				success: function(data){
+			 		hideLoading();
+			 		if(data.error)
+				 		alert(data.error);
+			 		else
+				 		window.location.href=data.success;
+				},
+				error: function(XMLHttpRequest, textStatus, errorThrown){
+					hideLoading();
+					alert("网络繁忙，请稍后再试");
+				},
+				dataType: "json"
+			} );
+	 }
+	 return false;
+}
+
+ var loadingSign;
+ function showLoading(message)
+ {
+ 	if((undefined == message) || (null == message)){
+ 		message = 'Loading';
+ 	}
+
+ 	var loadingHtml = '<div id="loading"><img src="{$objdir}/image/loading.gif" title="Loading" alt="loading" /><p id="loading-message">' + message + '</p></div>';
+ 	$('body').append(loadingHtml);
+ 	$('#loading').css('width', '200px');
+ 	$('#loading').css('left', '50%');
+ 	$('#loading').css('margin-left', '-100px');
+ 	$('#loading').css('top', '50%');
+ 	$('#loading').css('margin-top', '-30px');
+ 	$('#loading').css('display', 'block');
+ 	$("#loading").css('position','fixed').css('z-index','1002');
+ 	$("#zhezhao").show();
+ 	loadingSign = window.setInterval(function(){
+ 		if($('#loading-message').html().length < (message.length + 6)){
+ 			$('#loading-message').html($('#loading-message').html() + '.');
+ 		}else{
+ 			$('#loading-message').html(message);
+ 		}
+ 	}, 400);
+ }
+
+ /**
+  * 隐藏loading层
+  * 
+  * @return void
+  */
+ function hideLoading()
+ {
+ 	window.clearInterval(loadingSign);
+ 	$('#loading').remove();
+ 	$("#zhezhao").hide();
+ }
+	</script>

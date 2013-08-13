@@ -1,0 +1,22 @@
+
+{if is_array($menu) }
+{foreach from=$menu item=m key=k}
+<li >
+	<a href="#" class="m1">{$m.title}</a>
+	<ul class="m2">
+		{foreach from=$m.subc item=t key=p}
+		<li {if $action==$p}class="cur"{/if}><a href="{$url}?mod={$m.mod}&act={$p}">{$t}</a></li>
+		{/foreach}
+	</ul>	
+</li>
+{/foreach}
+{/if}
+<script>
+$(document).ready(function(){
+	$(".menu > li > a ").toggle(function(){
+		$(this).parent().addClass("hidden").find("ul").hide();
+	},function(){
+		$(this).parent().removeClass("hidden").find("ul").show();
+	});
+});
+</script>
